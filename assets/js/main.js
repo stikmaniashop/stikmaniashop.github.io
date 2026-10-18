@@ -1,3 +1,8 @@
+/* ============================================
+   STIKMANIA - JavaScript Global
+   Versión 6.0 - Funciones globales para 15+ HTMLs
+   ============================================ */
+
 // === DATOS ===
 const products = [
     { id: 1, name: "Pack Anime Legendario", nameEn: "Legendary Anime Pack", category: "anime", price: 3, oldPrice: 4, discount: 25, rating: 5, reviews: 24, badge: "TOP", badgeType: "hot", description: "Los personajes más icónicos del anime.", descriptionEn: "The most iconic anime characters.", specs: ["24 stickers", "4-7 cm", "Vinilo impermeable"], specsEn: ["24 stickers", "4-7 cm", "Waterproof vinyl"], icon: "anime" },
@@ -37,19 +42,29 @@ window.removeFromCart = function(productId) {
     updateCartUI();
 };
 
+window.closeMenu = function() {
+    const drawer = document.getElementById('menuDrawer');
+    const overlay = document.getElementById('menuOverlay');
+    const toggle = document.getElementById('menuToggle');
+    if (drawer) drawer.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    if (toggle) toggle.classList.remove('active');
+};
+
 // === INICIALIZACIÓN ===
 document.addEventListener('DOMContentLoaded', function() {
-    initLoader();
-    initMenu();
-    initCart();
-    initLanguage();
-    initScrollReveal();
-    initFAQ();
+    try { initLoader(); } catch(e) { console.log('Loader:', e); }
+    try { initMenu(); } catch(e) { console.log('Menu:', e); }
+    try { initCart(); } catch(e) { console.log('Cart:', e); }
+    try { initLanguage(); } catch(e) { console.log('Lang:', e); }
+    try { initScrollReveal(); } catch(e) { console.log('Reveal:', e); }
+    try { initFAQ(); } catch(e) { console.log('FAQ:', e); }
+    try { initDynamicYear(); } catch(e) { console.log('Year:', e); }
     
     if (document.getElementById('productsGrid')) {
-        renderProducts(products);
-        initFilters();
-        initSearch();
+        try { renderProducts(products); } catch(e) { console.log('Products:', e); }
+        try { initFilters(); } catch(e) { console.log('Filters:', e); }
+        try { initSearch(); } catch(e) { console.log('Search:', e); }
     }
 });
 
@@ -72,14 +87,8 @@ function initMenu() {
         if (overlay) overlay.classList.add('active');
     });
     
-    if (close) close.addEventListener('click', () => {
-        drawer.classList.remove('active');
-        if (overlay) overlay.classList.remove('active');
-    });
-    if (overlay) overlay.addEventListener('click', () => {
-        drawer.classList.remove('active');
-        overlay.classList.remove('active');
-    });
+    if (close) close.addEventListener('click', window.closeMenu);
+    if (overlay) overlay.addEventListener('click', window.closeMenu);
 }
 
 function initCart() {
@@ -211,6 +220,10 @@ function initFAQ() {
             }
         });
     });
+}
+
+function initDynamicYear() {
+    document.querySelectorAll('.current-year').forEach(s => s.textContent = new Date().getFullYear());
 }
 
 function showToast(message, type = 'success') {

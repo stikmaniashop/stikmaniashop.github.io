@@ -1,6 +1,11 @@
-/* === VARIABLES === */
+/* ============================================
+   STIKMANIA - CSS Global para todas las páginas
+   Versión 6.0 - Compatible con 15+ HTMLs
+   ============================================ */
+
 :root {
   --neon-green: #00FF00;
+  --green: #006600;
   --dark-green: #003300;
   --black: #000000;
   --white: #FFFFFF;
@@ -9,27 +14,32 @@
   --gray-dark: #0a0a0a;
   --cyan: #00FFFF;
   --yellow: #FFD600;
+  --pink: #FF00AA;
+  --orange: #FF6600;
   --red: #FF3333;
   --text-muted: #888888;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  
   --font-display: 'Pirata One', display;
-  --font-body: 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+  --radius-xl: 16px;
   --radius-full: 50px;
+  
+  --shadow-sm: 0 2px 8px rgba(0, 255, 0, 0.1);
+  --shadow-md: 0 10px 30px rgba(0, 255, 0, 0.2);
+  --shadow-lg: 0 20px 40px rgba(0, 255, 0, 0.3);
+  
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.3s ease;
+  --transition-slow: 0.8s ease;
 }
 
-/* === RESET === */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  -webkit-tap-highlight-color: transparent;
-}
-
-html {
-  scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
@@ -44,10 +54,8 @@ body {
 body::after {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background-image: url('../images/var_malva.jpg');
   background-size: cover;
   background-position: center;
@@ -57,7 +65,6 @@ body::after {
   pointer-events: none;
 }
 
-/* === TIPOGRAFÍA === */
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   text-transform: uppercase;
@@ -81,6 +88,9 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.text-muted { color: var(--text-muted); }
+.text-neon { color: var(--neon-green); }
 
 .text-gradient {
   background: linear-gradient(90deg, #00FF00, #00cc00, #00FF00);
@@ -106,7 +116,6 @@ img {
   border: 0;
 }
 
-/* === LAYOUT === */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -400,7 +409,6 @@ header {
   font-size: 0.9rem;
   border-radius: var(--radius-sm);
   transition: all 0.2s ease;
-  cursor: pointer;
 }
 
 .menu-drawer a:hover {
@@ -409,8 +417,8 @@ header {
 }
 
 .menu-drawer a svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   stroke: currentColor;
   fill: none;
   stroke-width: 2;
@@ -634,8 +642,8 @@ header {
 }
 
 .trust-badge svg {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   stroke: var(--neon-green);
   fill: none;
 }
@@ -691,7 +699,6 @@ header {
 
 .breadcrumbs a {
   color: var(--neon-green);
-  cursor: pointer;
 }
 
 .breadcrumbs span {
@@ -708,12 +715,11 @@ header {
 .benefit {
   text-align: center;
   padding: 20px 10px;
-  cursor: pointer;
 }
 
 .benefit svg {
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   stroke: var(--neon-green);
   fill: none;
   margin: 0 auto 10px auto;
@@ -794,8 +800,8 @@ header {
 }
 
 .product-image svg {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   stroke: var(--neon-green);
   fill: none;
 }
@@ -1039,7 +1045,7 @@ header {
   padding: 0 15px 15px 15px;
 }
 
-/* === CTA FINAL === */
+/* === CTA === */
 .cta-final {
   padding: 50px 0;
   text-align: center;
@@ -1102,8 +1108,8 @@ header {
 }
 
 .bottom-nav-item svg {
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   stroke: currentColor;
   fill: none;
   stroke-width: 2;
@@ -1155,7 +1161,6 @@ footer {
 .footer-col a {
   color: #999;
   font-size: 0.85rem;
-  cursor: pointer;
 }
 
 .footer-col a:hover {
@@ -1187,8 +1192,8 @@ footer {
 }
 
 .whatsapp-float svg {
-  width: 26px;
-  height: 26px;
+  width: 28px;
+  height: 28px;
   fill: white;
 }
 
@@ -1282,7 +1287,93 @@ footer {
   transition: height 0.1s ease;
 }
 
+/* === FIX: ÍCONOS SVG PROPORCIONALES === */
+svg {
+  max-width: 100%;
+  height: auto;
+}
+
+header svg {
+  width: 18px;
+  height: 18px;
+}
+
+.menu-toggle span {
+  width: 18px;
+  height: 2px;
+}
+
+.menu-drawer a svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.bottom-nav-item svg {
+  width: 22px;
+  height: 22px;
+}
+
+.benefit svg {
+  width: 36px;
+  height: 36px;
+  margin: 0 auto 10px auto;
+}
+
+.trust-badge svg {
+  width: 20px;
+  height: 20px;
+}
+
+.hero-ctas .btn svg {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+}
+
+.product-image svg {
+  width: 44px;
+  height: 44px;
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+}
+
+.cart-item-image svg {
+  width: 24px;
+  height: 24px;
+}
+
 /* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .benefit svg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .bottom-nav-item svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .menu-drawer a svg {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .product-image svg {
+    width: 38px;
+    height: 38px;
+  }
+  
+  header svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
 @media (min-width: 769px) {
   body {
     padding-bottom: 0;
@@ -1308,8 +1399,8 @@ footer {
   }
   
   .whatsapp-float svg {
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
   }
   
   .hero {
@@ -1369,111 +1460,5 @@ footer {
 @media (min-width: 1024px) {
   .products-grid {
     grid-template-columns: repeat(4, 1fr);
-  }
-}
-
-/* === FIX: ÍCONOS SVG EN TODOS LOS TAMAÑOS === */
-svg {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Header */
-header svg {
-  width: 18px;
-  height: 18px;
-}
-
-/* Menú hamburguesa */
-.menu-toggle svg,
-.menu-toggle span {
-  width: 18px;
-  height: 2px;
-}
-
-/* Menú drawer */
-.menu-drawer a svg {
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
-}
-
-/* Bottom nav */
-.bottom-nav-item svg {
-  width: 22px;
-  height: 22px;
-}
-
-/* Cards de beneficios */
-.benefit svg {
-  width: 36px;
-  height: 36px;
-  margin: 0 auto 10px auto;
-}
-
-/* Trust badges */
-.trust-badge svg {
-  width: 20px;
-  height: 20px;
-}
-
-/* Hero CTAs */
-.hero-ctas .btn svg {
-  width: 18px;
-  height: 18px;
-  margin-right: 6px;
-}
-
-/* Productos */
-.product-image svg {
-  width: 44px;
-  height: 44px;
-}
-
-/* Galería, marcas, footer - no tocar */
-.brands-logos img,
-.gallery-item img {
-  max-width: 100%;
-}
-
-/* WhatsApp float */
-.whatsapp-float svg {
-  width: 28px;
-  height: 28px;
-}
-
-/* Cart drawer items */
-.cart-item-image svg {
-  width: 24px;
-  height: 24px;
-}
-
-/* Breadcrumbs - sin SVG, no afecta */
-
-/* Responsive: móvil */
-@media (max-width: 768px) {
-  .benefit svg {
-    width: 32px;
-    height: 32px;
-  }
-  
-  .bottom-nav-item svg {
-    width: 20px;
-    height: 20px;
-  }
-  
-  .menu-drawer a svg {
-    width: 18px;
-    height: 18px;
-  }
-  
-  .product-image svg {
-    width: 38px;
-    height: 38px;
-  }
-  
-  header svg {
-    width: 16px;
-    height: 16px;
   }
 }
