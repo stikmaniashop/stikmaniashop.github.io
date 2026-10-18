@@ -1,0 +1,56 @@
+.card {
+  background: var(--gray);
+  border: 2px solid var(--gray-light);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--neon-green);
+  transform: translateY(-5px);
+}
+
+.card-image {
+  height: 150px;
+  background: linear-gradient(135deg, rgba(0, 255, 0, 0.15), rgba(0, 102, 0, 0.15));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card-content {
+  padding: 15px;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.card-description {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.card-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: var(--red);
+  color: var(--white);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.card-badge.new {
+  background: var(--cyan);
+  color: var(--black);
+}

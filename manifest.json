@@ -1,0 +1,24 @@
+{
+  "name": "STIKMANIA - Stickers Personalizados",
+  "short_name": "STIKMANIA",
+  "description": "La tienda definitiva de stickers en Cuba. Packs de anime, series y videojuegos. Etiquetas para negocios y empaques para artesanos.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00FF00",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["shopping", "business"],
+  "lang": "es"
+}

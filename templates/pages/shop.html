@@ -1,0 +1,98 @@
+<section class="shop-page" style="padding-top: 80px;">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="text-gradient">Nuestra tienda</h2>
+      <p>Entrega en 2-5 días en La Habana.</p>
+    </div>
+
+    <div class="filters-container">
+      <button class="filter-chip active" data-filter="all">Todos</button>
+      <button class="filter-chip" data-filter="anime">Anime</button>
+      <button class="filter-chip" data-filter="gamer">Gamer</button>
+      <button class="filter-chip" data-filter="cine">Cine</button>
+      <button class="filter-chip" data-filter="skate">Skate</button>
+      <button class="filter-chip" data-filter="stikmania">Stikmania</button>
+      <button class="filter-chip" data-filter="personalizado">Personalizado</button>
+    </div>
+
+    <div class="products-grid" id="products-grid"></div>
+  </div>
+</section>
+
+<section class="calculator-section section-dark">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="text-gradient">Cotizador</h2>
+      <p>Calcula tu inversión en segundos.</p>
+    </div>
+    <div class="calc-wrapper">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Cantidad</label>
+          <input type="number" id="calc-qty" value="50" min="10" step="10">
+        </div>
+        <div class="form-group">
+          <label>Material</label>
+          <select id="calc-material">
+            <option value="vinyl">Vinilo impermeable</option>
+            <option value="photo">Papel fotográfico</option>
+            <option value="transparent">Vinilo transparente</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Ancho (cm)</label>
+          <input type="number" id="calc-width" value="5" step="0.5" min="2" max="30">
+        </div>
+        <div class="form-group">
+          <label>Alto (cm)</label>
+          <input type="number" id="calc-height" value="5" step="0.5" min="2" max="30">
+        </div>
+      </div>
+      <button class="btn btn-primary btn-block" id="calc-submit">Calcular</button>
+      <div class="result-box" id="calc-result">
+        <p>Presupuesto: <span id="calc-summary"></span></p>
+        <div class="result-price" id="calc-price">$0.00 USD</div>
+        <a id="calc-whatsapp" href="#" target="_blank" class="btn btn-primary btn-large">Enviar por WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="text-gradient">Preguntas frecuentes</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Los stickers se pueden mojar?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Sí. Todos nuestros stickers en vinilo impermeable resisten agua, lluvia y lavados.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Cuál es el pedido mínimo?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Para pedidos corporativos, el mínimo es de 50 unidades por diseño.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>¿Cuánto tarda la entrega?</span>
+          <span class="faq-toggle">+</span>
+        </div>
+        <div class="faq-answer">
+          <p>Packs predefinidos: 2-5 días. Pedidos personalizados: 3-7 días.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

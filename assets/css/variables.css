@@ -1,0 +1,21 @@
+:root {
+  --neon-green: #00FF00;
+  --dark-green: #003300;
+  --black: #000000;
+  --white: #FFFFFF;
+  --gray: #1a1a1a;
+  --gray-light: #2a2a2a;
+  --gray-dark: #0a0a0a;
+  --cyan: #00FFFF;
+  --yellow: #FFD600;
+  --red: #FF3333;
+  --text-muted: #888888;
+  
+  --font-display: 'Pirata One', display;
+  --font-body: 'Inter', system-ui, sans-serif;
+  
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 50px;
+}

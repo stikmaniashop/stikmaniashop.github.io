@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo Web Profesional en Cuba | STIKMANIA</title>
+    <meta name="description" content="Desarrollo de páginas web profesionales en Cuba. Landing pages, e-commerce, portfolios y web apps. Diseño moderno, responsive y optimizado para SEO.">
+    <meta name="keywords" content="desarrollo web Cuba, páginas web La Habana, diseño web, landing pages, e-commerce Cuba, web apps, SEO Cuba">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#00FF00">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pirata+One&display=swap" rel="stylesheet">
+    
+    <!-- Sistema de diseño unificado -->
+    <link rel="stylesheet" href="assets/css/global.css">
+    
+    <style>
+        /* Estilos específicos de web */
+        .web-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        .web-type-card {
+            background: var(--gray);
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius-xl);
+            padding: 35px 30px;
+            transition: all var(--transition-base);
+            position: relative;
+        }
+        .web-type-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--cyan);
+            box-shadow: 0 20px 40px rgba(0, 255, 255, 0.15);
+        }
+        .web-type-card.featured {
+            border-color: var(--cyan);
+        }
+        .web-type-card.featured::before {
+            content: 'MÁS POPULAR';
+            position: absolute;
+            top: -12px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--cyan);
+            color: var(--black);
+            padding: 4px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .web-type-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--cyan);
+        }
+        .web-type-card h3 {
+            color: var(--cyan);
+            margin-bottom: 10px;
+        }
+        .web-type-price {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .web-type-price small {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-family: var(--font-body);
+        }
+        .web-type-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+        .web-type-features li {
+            padding: 8px 0;
+            font-size: 0.9rem;
+            color: #ccc;
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .web-type-features li:last-child { border-bottom: none; }
+        .web-type-features li::before {
+            content: '✓ ';
+            color: var(--cyan);
+            font-weight: bold;
+        }
+        .btn-web {
+            background: var(--cyan);
+            color: var(--black);
+        }
+        .btn-web:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.4);
+        }
+        .portfolio-web-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .portfolio-web-card {
+            background: var(--gray);
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+        .portfolio-web-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--cyan);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.2);
+        }
+        .portfolio-web-image {
+            height: 200px;
+            background: linear-gradient(135deg, rgba(0,255,255,0.1), rgba(0,102,204,0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+        }
+        .portfolio-web-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity var(--transition-base);
+        }
+        .portfolio-web-card:hover .portfolio-web-overlay { opacity: 1; }
+        .portfolio-web-info { padding: 25px; }
+        .portfolio-web-info h3 {
+            color: var(--cyan);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        .portfolio-web-info p {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .tech-tag {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid var(--cyan);
+            color: var(--cyan);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .process-step {
+            text-align: center;
+            position: relative;
+        }
+        .process-number {
+            width: 60px; height: 60px;
+            background: linear-gradient(135deg, var(--cyan), #0066cc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--black);
+            margin: 0 auto 20px auto;
+        }
+        .process-step h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .process-step p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loader -->
+    <div id="loader"><div class="loader-spinner"></div></div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <a href="index.html" class="logo">STIKMANIA</a>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#tienda">Tienda</a></li>
+                        <li><a href="branding.html">Branding</a></li>
+                        <li><a href="#cotizador" class="btn btn-primary" style="padding: 8px 16px;">Cotizar</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container" style="text-align: center;">
+            <div class="hero-badge fade-in">💻 Desarrollo Web Profesional</div>
+            <h1 class="fade-in" style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">
+                Webs que venden.<br>Código que funciona.
+            </h1>
+            <p class="hero-subtitle fade-in" style="margin-left: auto; margin-right: auto;">
+                Landing pages, e-commerce, portfolios y web apps. Diseño moderno, responsive y optimizado para SEO. Contratos claros y entrega garantizada.
+            </p>
+            <div class="hero-ctas fade-in" style="justify-content: center;">
+                <a href="#cotizador" class="btn btn-web btn-large">Cotizar proyecto</a>
+                <a href="#tipos" class="btn btn-outline btn-large" style="border-color: var(--cyan); color: var(--cyan);">Ver tipos de web</a>
+            </div>
+            
+            <div class="trust-badges fade-in" style="justify-content: center;">
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">🚀</span>
+                    <span>Entrega 5-45 días</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">📱</span>
+                    <span>100% responsive</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">📄</span>
+                    <span>Contrato incluido</span>
+                </div>
+                <div class="trust-badge">
+                    <span class="trust-badge-icon">🎓</span>
+                    <span>Capacitación gratis</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TIPOS DE WEB -->
+    <section id="tipos" class="section section-dark">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">Tipos de web</h2>
+                <p>Precios accesibles para el mercado cubano. Hosting incluido el primer año.</p>
+            </div>
+            
+            <div class="web-types-grid">
+                <div class="web-type-card fade-in">
+                    <div class="web-type-icon">🎯</div>
+                    <h3>Landing / Portfolio</h3>
+                    <div class="web-type-price">$20 <small>USD</small></div>
+                    <ul class="web-type-features">
+                        <li>1-3 secciones</li>
+                        <li>Diseño responsive</li>
+                        <li>Formulario de contacto</li>
+                        <li>SEO básico</li>
+                        <li>Hosting 1er año incluido</li>
+                        <li>Entrega 5-10 días</li>
+                    </ul>
+                    <a href="https://wa.me/5359758756?text=Hola!%20Quiero%20una%20landing%20page" target="_blank" class="btn btn-outline btn-block" style="border-color: var(--cyan); color: var(--cyan);">Empezar</a>
+                </div>
+                
+                <div class="web-type-card featured fade-in">
+                    <div class="web-type-icon">🏢</div>
+                    <h3>Web Corporativa</h3>
+                    <div class="web-type-price">$50 <small>USD</small></div>
+                    <ul class="web-type-features">
+                        <li>4-8 secciones</li>
+                        <li>Múltiples páginas</li>
+                        <li>Panel autoadministrable</li>
+                        <li>SEO avanzado</li>
+                        <li>Hosting 1er año incluido</li>
+                        <li>Entrega 10-20 días</li>
+                    </ul>
+                    <a href="https://wa.me/5359758756?text=Hola!%20Quiero%20una%20web%20corporativa" target="_blank" class="btn btn-web btn-block">Empezar</a>
+                </div>
+                
+                <div class="web-type-card fade-in">
+                    <div class="web-type-icon">🛒</div>
+                    <h3>E-commerce</h3>
+                    <div class="web-type-price">$80 <small>USD</small></div>
+                    <ul class="web-type-features">
+                        <li>Catálogo de productos</li>
+                        <li>Carrito de compras</li>
+                        <li>Pasarela de pago</li>
+                        <li>Panel de administración</li>
+                        <li>Hosting 1er año incluido</li>
+                        <li>Entrega 15-30 días</li>
+                    </ul>
+                    <a href="https://wa.me/5359758756?text=Hola!%20Quiero%20un%20e-commerce" target="_blank" class="btn btn-outline btn-block" style="border-color: var(--cyan); color: var(--cyan);">Empezar</a>
+                </div>
+                
+                <div class="web-type-card fade-in">
+                    <div class="web-type-icon">⚙️</div>
+                    <h3>Web App</h3>
+                    <div class="web-type-price">$80 <small>USD</small></div>
+                    <ul class="web-type-features">
+                        <li>Funcionalidad personalizada</li>
+                        <li>Base de datos</li>
+                        <li>Autenticación de usuarios</li>
+                        <li>Dashboard administrativo</li>
+                        <li>Hosting 1er año incluido</li>
+                        <li>Entrega 20-45 días</li>
+                    </ul>
+                    <a href="https://wa.me/5359758756?text=Hola!%20Quiero%20una%20web%20app" target="_blank" class="btn btn-outline btn-block" style="border-color: var(--cyan); color: var(--cyan);">Empezar</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESO -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">Nuestro proceso</h2>
+                <p>De la idea al lanzamiento en 4 pasos claros.</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="process-step fade-in">
+                    <div class="process-number">1</div>
+                    <h3>Briefing</h3>
+                    <p>Entendemos tu negocio, objetivos y audiencia.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">2</div>
+                    <h3>Diseño</h3>
+                    <p>Creamos mockups y prototipos navegables.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">3</div>
+                    <h3>Desarrollo</h3>
+                    <p>Código limpio, responsive y optimizado.</p>
+                </div>
+                <div class="process-step fade-in">
+                    <div class="process-number">4</div>
+                    <h3>Lanzamiento</h3>
+                    <p>Deploy, capacitación y soporte post-entrega.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO WEB -->
+    <section class="section section-dark">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">Proyectos realizados</h2>
+                <p>Webs que ya están generando resultados.</p>
+            </div>
+            
+            <div class="portfolio-web-grid">
+                <div class="portfolio-web-card fade-in">
+                    <div class="portfolio-web-image">
+                        ⚡
+                        <div class="portfolio-web-overlay">
+                            <a href="https://novoelectra.github.io" target="_blank" class="btn btn-web" style="padding: 10px 20px; font-size: 0.85rem;">Visitar sitio</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-web-info">
+                        <h3>Novoelectra</h3>
+                        <p>Sitio corporativo para empresa de soluciones eléctricas. Diseño moderno, responsive y optimizado para SEO.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">Landing</span>
+                            <span class="tech-tag">Responsive</span>
+                            <span class="tech-tag">SEO</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-web-card fade-in">
+                    <div class="portfolio-web-image">
+                        🛍️
+                        <div class="portfolio-web-overlay">
+                            <a href="https://mipincha.github.io" target="_blank" class="btn btn-web" style="padding: 10px 20px; font-size: 0.85rem;">Visitar sitio</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-web-info">
+                        <h3>Mi Pincha</h3>
+                        <p>Plataforma para emprendimiento local. Catálogo de productos, integración con WhatsApp y diseño mobile-first.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">E-commerce</span>
+                            <span class="tech-tag">Mobile-first</span>
+                            <span class="tech-tag">WhatsApp</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-web-card fade-in">
+                    <div class="portfolio-web-image">
+                        🎨
+                        <div class="portfolio-web-overlay">
+                            <a href="index.html" class="btn btn-web" style="padding: 10px 20px; font-size: 0.85rem;">Ver este sitio</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-web-info">
+                        <h3>STIKMANIA</h3>
+                        <p>Este mismo sitio. PWA con sistema de diseño unificado, cotizador en tiempo real y prueba social dinámica.</p>
+                        <div class="tech-tags">
+                            <span class="tech-tag">PWA</span>
+                            <span class="tech-tag">Unificado</span>
+                            <span class="tech-tag">Cotizador</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GARANTÍAS -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">Lo que incluye el precio</h2>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit fade-in">
+                    <div class="benefit-icon" style="color: var(--cyan);">🌐</div>
+                    <h3>Hosting + Dominio</h3>
+                    <p>Primer año de hosting incluido. Configuración de dominio y certificado SSL.</p>
+                </div>
+                <div class="benefit fade-in">
+                    <div class="benefit-icon" style="color: var(--cyan);">📱</div>
+                    <h3>Diseño Responsive</h3>
+                    <p>Se ve perfecto en cualquier dispositivo: móvil, tablet y desktop.</p>
+                </div>
+                <div class="benefit fade-in">
+                    <div class="benefit-icon" style="color: var(--cyan);">📄</div>
+                    <h3>Contrato Incluido</h3>
+                    <p>Documento que protege ambas partes con alcance, cronograma y garantías.</p>
+                </div>
+                <div class="benefit fade-in">
+                    <div class="benefit-icon" style="color: var(--cyan);">🎓</div>
+                    <h3>Capacitación</h3>
+                    <p>Te enseñamos a gestionar tu web para que seas independiente.</p>
+                </div>
+                <div class="benefit fade-in">
+                    <div class="benefit-icon" style="color: var(--cyan);">🛠️</div>
+                    <h3>Soporte Post-Entrega</h3>
+                    <p>1 mes de soporte técnico incluido para bugs y ajustes menores.</p>
+                </div>
+                <div class="benefit fade-in">
+                    <div class="benefit-icon" style="color: var(--cyan);">🔒</div>
+                    <h3>Seguridad</h3>
+                    <p>HTTPS, backups automáticos y protección contra ataques comunes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- COTIZADOR WEB -->
+    <section id="cotizador" class="section section-dark">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">Cotiza tu proyecto web</h2>
+                <p>Respuesta en menos de 24 horas.</p>
+            </div>
+            
+            <div class="calc-wrapper fade-in">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Nombre</label>
+                        <input type="text" id="web-name" placeholder="Tu nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>Teléfono</label>
+                        <input type="tel" id="web-phone" placeholder="+53 5 000 0000">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label>Marca/Negocio</label>
+                    <input type="text" id="web-brand" placeholder="Nombre de tu proyecto">
+                </div>
+                
+                <div class="form-group">
+                    <label>Tipo de web</label>
+                    <select id="web-type">
+                        <option value="landing">Landing / Portfolio ($20 USD)</option>
+                        <option value="corporativa">Web Corporativa ($50 USD)</option>
+                        <option value="ecommerce">E-commerce ($80 USD)</option>
+                        <option value="webapp">Web App ($80 USD)</option>
+                        <option value="personalizado">Proyecto personalizado</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>¿Ya tienes dominio y hosting?</label>
+                    <select id="web-hosting">
+                        <option value="no">No, necesito ambos</option>
+                        <option value="dominio">Solo tengo dominio</option>
+                        <option value="si">Sí, ya tengo ambos</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label>Describe tu proyecto</label>
+                    <textarea id="web-desc" rows="4" placeholder="¿Qué funcionalidades necesitas? ¿Qué páginas quieres incluir?"></textarea>
+                </div>
+                
+                <button class="btn btn-web btn-block" id="web-submit" style="padding: 16px; font-size: 1rem;">
+                    📩 Enviar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2 style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">Preguntas frecuentes</h2>
+            </div>
+            
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>¿Qué incluye el hosting del primer año?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Alojamiento web, certificado SSL (HTTPS), correos corporativos básicos y mantenimiento del servidor. Renovación desde $50 USD/año.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>¿Necesito pagar anticipo?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, 50% de anticipo para comenzar el proyecto. El 50% restante se paga al momento de la entrega final.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>¿Puedo actualizar el contenido yo mismo?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí. Todos los proyectos incluyen capacitación para que puedas actualizar contenido básico sin depender de nosotros.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>¿La web será compatible con móviles?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, todas nuestras webs son 100% responsive. Se adaptan perfectamente a cualquier tamaño de pantalla.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question">
+                        <span>¿Qué pasa si necesito cambios después de la entrega?</span>
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Incluimos 1 mes de soporte post-entrega para corrección de bugs y ajustes menores. Cambios estructurales se cotizan aparte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <div class="container fade-in">
+            <h2 style="background: linear-gradient(90deg, #00FFFF, #0099cc, #00FFFF); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 3s linear infinite;">¿Listo para tu web?</h2>
+            <p>Presupuesto sin compromiso. Respuesta en 24 horas.</p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/5359758756?text=Hola!%20Quiero%20cotizar%20una%20web" target="_blank" class="btn btn-web btn-large">💬 Hablar por WhatsApp</a>
+                <a href="branding.html" class="btn btn-outline btn-large" style="border-color: var(--cyan); color: var(--cyan);">Ver branding</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>STIKMANIA</h3>
+                    <p>Diseño que se pega. Stickers, etiquetas y empaques personalizados en La Habana, Cuba.</p>
+                    <p style="margin-top: 15px;">© <span class="current-year">2026</span> STIKMANIA. Todos los derechos reservados.</p>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Tienda</h4>
+                    <ul>
+                        <li><a href="index.html#tienda">Packs populares</a></li>
+                        <li><a href="index.html#tienda">Categorías</a></li>
+                        <li><a href="index.html#cotizador">Personalizado</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Servicios</h4>
+                    <ul>
+                        <li><a href="branding.html">Branding</a></li>
+                        <li><a href="web.html">Desarrollo web</a></li>
+                        <li><a href="index.html#empresas">Para empresas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contacto</h4>
+                    <ul>
+                        <li><a href="https://wa.me/5359758756" target="_blank">WhatsApp</a></li>
+                        <li><a href="mailto:stikmania795@gmail.com">Email</a></li>
+                        <li><a href="https://instagram.com/sti_kmania" target="_blank">Instagram</a></li>
+                        <li><a href="tel:+5359758756">+53 5 975 8756</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>La Habana, Cuba • Diseño y producción 100% local</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/5359758756?text=Hola!%20Vengo%20de%20la%20web" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts compartidos -->
+    <script src="assets/js/main.js"></script>
+    
+    <!-- Script específico de web -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var submitBtn = document.getElementById('web-submit');
+            if (submitBtn) {
+                submitBtn.addEventListener('click', function() {
+                    var name = document.getElementById('web-name').value || 'No especificado';
+                    var phone = document.getElementById('web-phone').value || 'No especificado';
+                    var brand = document.getElementById('web-brand').value || 'No especificado';
+                    var type = document.getElementById('web-type');
+                    var typeText = type.options[type.selectedIndex].text;
+                    var hosting = document.getElementById('web-hosting');
+                    var hostingText = hosting.options[hosting.selectedIndex].text;
+                    var desc = document.getElementById('web-desc').value || 'No especificado';
+                    
+                    var msg = '💻 *COTIZACIÓN WEB - STIKMANIA*\n\n' +
+                              '• Nombre: ' + name + '\n' +
+                              '• Teléfono: ' + phone + '\n' +
+                              '• Marca: ' + brand + '\n' +
+                              '• Tipo de web: ' + typeText + '\n' +
+                              '• Hosting: ' + hostingText + '\n' +
+                              '• Descripción: ' + desc + '\n\n' +
+                              '✅ Quiero más información.';
+                    
+                    window.open('https://wa.me/5359758756?text=' + encodeURIComponent(msg), '_blank');
+                });
+            }
+        });
+    </script>
+</body>
+</html>
