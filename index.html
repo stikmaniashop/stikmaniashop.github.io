@@ -56,7 +56,7 @@
         }
         * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
         html { scroll-behavior:smooth; }
-        body { font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.5; padding-bottom:70px; overflow-x:hidden; }
+        body { font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.5; overflow-x:hidden; }
         a { text-decoration:none; color:inherit; }
         button { font-family:inherit; cursor:pointer; border:none; background:none; }
         img { max-width:100%; display:block; }
@@ -87,7 +87,7 @@
         .btn-outline { border:2px solid var(--neon); color:var(--neon); }
         .hero-buttons { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
 
-        /* MARQUEE LOGOS - FIX MÓVIL */
+        /* MARQUEE LOGOS */
         .marquee-section { padding:40px 0; background:var(--surface); border-top:1px solid #222; border-bottom:1px solid #222; overflow:hidden; }
         .marquee-title { text-align:center; color:var(--text-muted); font-size:0.85rem; margin-bottom:25px; text-transform:uppercase; letter-spacing:2px; }
         .marquee-container { display:flex; width:200%; animation:scroll 30s linear infinite; }
@@ -118,13 +118,6 @@
         .product-price { font-size:1.3rem; font-weight:bold; color:var(--neon); font-family:var(--font-display); }
         .add-btn { background:var(--neon); color:#000; padding:8px 16px; border-radius:6px; font-weight:600; font-size:0.85rem; }
 
-        /* GALERÍA */
-        .gallery-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:10px; }
-        .gallery-item { aspect-ratio:1; background:var(--surface); border-radius:8px; overflow:hidden; position:relative; border:1px solid #222; }
-        .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.5s; }
-        .gallery-item:hover img { transform:scale(1.1); }
-        .gallery-tag { position:absolute; bottom:8px; left:8px; background:rgba(0,0,0,0.8); color:var(--neon); padding:4px 8px; border-radius:4px; font-size:0.7rem; font-weight:bold; }
-
         /* COTIZADOR */
         .calc-box { background:var(--surface); border:1px solid #222; border-radius:12px; padding:30px; max-width:600px; margin:0 auto; }
         .form-group { margin-bottom:20px; }
@@ -153,14 +146,32 @@
         .cart-item-price { color:var(--neon); font-size:0.85rem; }
         .remove-btn { color:var(--danger); font-size:1.2rem; padding:5px; }
 
-        /* BOTTOM NAV */
-        .bottom-nav { position:fixed; bottom:0; width:100%; background:rgba(5,5,5,0.98); border-top:1px solid #222; display:flex; justify-content:space-around; padding:10px 0; z-index:99; backdrop-filter:blur(10px); }
-        .nav-item { display:flex; flex-direction:column; align-items:center; gap:4px; color:var(--text-muted); font-size:0.7rem; transition:color 0.3s; }
-        .nav-item.active { color:var(--neon); }
-        .nav-item svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:2; }
+        /* WHATSAPP FLOTANTE */
+        .whatsapp-float {
+            position:fixed;
+            bottom:25px;
+            right:25px;
+            width:60px;
+            height:60px;
+            background:#25D366;
+            border-radius:50%;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-shadow:0 4px 20px rgba(37,211,102,0.5);
+            z-index:99;
+            animation:pulse 2s infinite;
+            transition:transform 0.3s;
+        }
+        .whatsapp-float:hover { transform:scale(1.1); }
+        .whatsapp-float svg { width:32px; height:32px; fill:white; }
+        @keyframes pulse {
+            0%, 100% { box-shadow:0 4px 20px rgba(37,211,102,0.5); }
+            50% { box-shadow:0 4px 30px rgba(37,211,102,0.8); }
+        }
 
         /* TOAST */
-        .toast-container { position:fixed; bottom:80px; left:50%; transform:translateX(-50%); z-index:300; display:flex; flex-direction:column; gap:10px; pointer-events:none; }
+        .toast-container { position:fixed; bottom:100px; left:50%; transform:translateX(-50%); z-index:300; display:flex; flex-direction:column; gap:10px; pointer-events:none; }
         .toast { background:var(--surface); border:1px solid var(--neon); padding:12px 20px; border-radius:8px; font-size:0.9rem; box-shadow:0 4px 12px rgba(0,0,0,0.5); animation:slideUp 0.3s ease; pointer-events:auto; }
         @keyframes slideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
@@ -169,11 +180,8 @@
         .footer-links a:hover { color:var(--neon); }
 
         @media (min-width:768px) {
-            .bottom-nav { display:none; }
-            body { padding-bottom:0; }
             .hero-logo-img { max-width:450px; }
             .products-grid { grid-template-columns:repeat(3,1fr); }
-            .gallery-grid { grid-template-columns:repeat(4,1fr); }
             .section-title { font-size:2.5rem; }
         }
     </style>
@@ -196,6 +204,7 @@
         </div>
     </header>
 
+    <!-- MENÚ HAMBURGUESA: SOLO GALERÍA, TÉRMINOS Y PRIVACIDAD -->
     <div class="overlay" id="menu-overlay"></div>
     <div class="drawer" id="menu-drawer">
         <div class="drawer-header">
@@ -206,26 +215,23 @@
         </div>
         <div class="drawer-body">
             <ul style="list-style:none;">
-                <li style="margin-bottom:20px;"><a href="index.html" style="font-size:1.1rem;display:block;padding:10px;">
-                    <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:middle;margin-right:10px;" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-                    <span data-i18n="nav_home">Inicio</span>
-                </a></li>
-                <li style="margin-bottom:20px;"><a href="#tienda" class="menu-link" style="font-size:1.1rem;display:block;padding:10px;">
-                    <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:middle;margin-right:10px;" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-                    <span data-i18n="nav_shop">Tienda</span>
-                </a></li>
-                <li style="margin-bottom:20px;"><a href="galeria.html" style="font-size:1.1rem;display:block;padding:10px;">
+                <li style="margin-bottom:20px;"><a href="galeria.html" class="menu-link" style="font-size:1.1rem;display:block;padding:10px;">
                     <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:middle;margin-right:10px;" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-                    <span data-i18n="nav_gallery">Galería</span>
+                    <span data-i18n="menu_gallery">Galería</span>
                 </a></li>
-                <li style="margin-bottom:20px;"><a href="#cotizador" class="menu-link" style="font-size:1.1rem;display:block;padding:10px;">
-                    <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:middle;margin-right:10px;" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M8 16h.01"/><path d="M12 16h.01"/><path d="M16 16h.01"/></svg>
-                    <span data-i18n="nav_quote">Cotizador</span>
+                <li style="margin-bottom:20px;"><a href="terminos.html" class="menu-link" style="font-size:1.1rem;display:block;padding:10px;">
+                    <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:middle;margin-right:10px;" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    <span data-i18n="menu_terms">Términos</span>
+                </a></li>
+                <li style="margin-bottom:20px;"><a href="privacidad.html" class="menu-link" style="font-size:1.1rem;display:block;padding:10px;">
+                    <svg style="width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2;vertical-align:middle;margin-right:10px;" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    <span data-i18n="menu_privacy">Privacidad</span>
                 </a></li>
             </ul>
         </div>
     </div>
 
+    <!-- CARRITO DRAWER -->
     <div class="overlay" id="cart-overlay"></div>
     <div class="drawer" id="cart-drawer">
         <div class="drawer-header">
@@ -247,13 +253,12 @@
     </div>
 
     <main>
-        <!-- HERO CON LOGO -->
+        <!-- HERO CON LOGO Y SOLO BOTÓN COTIZAR -->
         <section id="inicio" class="hero">
             <div class="container">
-                <img src="images/logoW.png" alt="STIKMANIA" class="hero-logo-img fade-in">
+                <img src="images/logoW.png" alt="STIKMANIA" class="hero-logo-img">
                 <p data-i18n="hero_subtitle">Para ti, tu negocio o tu arte. Vinilo impermeable, etiquetas profesionales y empaques personalizados en La Habana.</p>
                 <div class="hero-buttons">
-                    <a href="#tienda" class="btn btn-primary" data-i18n="hero_btn_shop">Ver Tienda</a>
                     <a href="#cotizador" class="btn btn-outline" data-i18n="hero_btn_quote">Cotizar Pedido</a>
                 </div>
             </div>
@@ -344,58 +349,49 @@
                 <a href="mailto:stikmania795@gmail.com">Email</a>
                 <a href="https://instagram.com/sti_kmania" target="_blank" rel="noopener">Instagram</a>
             </div>
+            <div class="footer-links" style="margin-top:10px;">
+                <a href="galeria.html" data-i18n="menu_gallery">Galería</a>
+                <a href="terminos.html" data-i18n="menu_terms">Términos</a>
+                <a href="privacidad.html" data-i18n="menu_privacy">Privacidad</a>
+            </div>
             <p>© 2026 STIKMANIA. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
         </div>
     </footer>
 
-    <nav class="bottom-nav">
-        <a href="#inicio" class="nav-item active">
-            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span data-i18n="nav_home">Inicio</span>
-        </a>
-        <a href="#tienda" class="nav-item">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-            <span data-i18n="nav_shop">Tienda</span>
-        </a>
-        <a href="galeria.html" class="nav-item">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-            <span data-i18n="nav_gallery">Galería</span>
-        </a>
-        <a href="#cotizador" class="nav-item">
-            <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M8 16h.01"/><path d="M12 16h.01"/><path d="M16 16h.01"/></svg>
-            <span data-i18n="nav_quote">Cotizar</span>
-        </a>
-    </nav>
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/5359758756" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
 
     <div class="toast-container" id="toast-container"></div>
 
     <script>
         const translations = {
             es: {
-                menu_title:"MENÚ", nav_home:"Inicio", nav_shop:"Tienda", nav_gallery:"Galería", nav_quote:"Cotizador", nav_contact:"Contacto",
+                menu_title:"MENÚ", menu_gallery:"Galería", menu_terms:"Términos", menu_privacy:"Privacidad",
                 cart_title:"TU CARRITO", cart_empty:"Tu carrito está vacío", cart_total:"Total:", cart_checkout:"Finalizar por WhatsApp",
                 hero_subtitle:"Para ti, tu negocio o tu arte. Vinilo impermeable, etiquetas profesionales y empaques personalizados en La Habana.",
-                hero_btn_shop:"Ver Tienda", hero_btn_quote:"Cotizar Pedido", marquee_title:"Confían en nosotros",
+                hero_btn_quote:"Cotizar Pedido", marquee_title:"Confían en nosotros",
                 shop_title_1:"Nuestros", shop_title_2:"Packs", shop_subtitle:"Listos para pedir. Entrega en 2-5 días en La Habana.",
                 calc_title_1:"Cotizador", calc_title_2:"Instantáneo", calc_subtitle:"Calcula tu inversión en segundos.",
                 calc_qty:"Cantidad", calc_material:"Material", calc_vinyl:"Vinilo Impermeable", calc_paper:"Papel Fotográfico (-30%)", calc_transparent:"Vinilo Transparente (+30%)",
                 calc_width:"Ancho (cm)", calc_height:"Alto (cm)", calc_button:"Calcular Presupuesto",
                 calc_result_label:"Presupuesto estimado:", calc_result_note:"*Precio final sujeto a revisión. 50% de anticipo.",
                 calc_whatsapp:"Enviar pedido por WhatsApp", footer_tagline:"Diseño que se pega. La Habana, Cuba.", footer_rights:"Todos los derechos reservados.",
-                add_to_cart:"Añadir", added_toast:"añadido al carrito", per_unit:"por unidad", total_units:"unidades", area:"Área", tier:"Tarifa"
+                add_to_cart:"Añadir", added_toast:"añadido al carrito", per_unit:"por unidad", total_units:"unidades", area:"Área"
             },
             en: {
-                menu_title:"MENU", nav_home:"Home", nav_shop:"Shop", nav_gallery:"Gallery", nav_quote:"Quote", nav_contact:"Contact",
+                menu_title:"MENU", menu_gallery:"Gallery", menu_terms:"Terms", menu_privacy:"Privacy",
                 cart_title:"YOUR CART", cart_empty:"Your cart is empty", cart_total:"Total:", cart_checkout:"Checkout via WhatsApp",
                 hero_subtitle:"For you, your business or your art. Waterproof vinyl, professional labels and custom packaging in Havana.",
-                hero_btn_shop:"View Shop", hero_btn_quote:"Get a Quote", marquee_title:"Trusted by",
+                hero_btn_quote:"Get a Quote", marquee_title:"Trusted by",
                 shop_title_1:"Our", shop_title_2:"Packs", shop_subtitle:"Ready to order. 2-5 day delivery in Havana.",
                 calc_title_1:"Instant", calc_title_2:"Quote", calc_subtitle:"Calculate your investment in seconds.",
                 calc_qty:"Quantity", calc_material:"Material", calc_vinyl:"Waterproof Vinyl", calc_paper:"Photo Paper (-30%)", calc_transparent:"Transparent Vinyl (+30%)",
                 calc_width:"Width (cm)", calc_height:"Height (cm)", calc_button:"Calculate Budget",
                 calc_result_label:"Estimated budget:", calc_result_note:"*Final price subject to review. 50% deposit required.",
                 calc_whatsapp:"Send order via WhatsApp", footer_tagline:"Design that sticks. Havana, Cuba.", footer_rights:"All rights reserved.",
-                add_to_cart:"Add", added_toast:"added to cart", per_unit:"per unit", total_units:"units", area:"Area", tier:"Rate"
+                add_to_cart:"Add", added_toast:"added to cart", per_unit:"per unit", total_units:"units", area:"Area"
             }
         };
 
@@ -464,7 +460,6 @@
         }
 
         function renderProducts() {
-            // Limpiar carruseles anteriores
             carouselIntervals.forEach(clearInterval);
             carouselIntervals = [];
 
@@ -475,7 +470,7 @@
                 
                 return `
                     <div class="product-card" data-category="${p.category}">
-                        <div class="product-img" ${isCarousel ? 'data-carousel="true" data-product-id="'+p.id+'"' : ''}>
+                        <div class="product-img" ${isCarousel ? 'data-carousel="true"' : ''}>
                             ${p.badge ? `<span class="badge ${p.badge==='NEW'?'new':''}">${p.badge}</span>` : ''}
                             ${isCarousel ? 
                                 `<img src="${stikmaniaImages[0]}" alt="${p.name}" class="carousel-img" loading="lazy" style="opacity:1;">` :
@@ -494,7 +489,6 @@
                 `;
             }).join('');
 
-            // Iniciar carruseles DESPUÉS de renderizar
             setTimeout(initCarousels, 100);
         }
 
@@ -517,11 +511,10 @@
             });
         }
 
-        // === FÓRMULA DE PRECIOS POR ÁREA ===
         function getPricePerSticker(areaCm2) {
-            if (areaCm2 <= 16) return 0.15;       // hasta 4x4
-            if (areaCm2 <= 49) return 0.18;       // hasta 7x7
-            return 0.18 + (areaCm2 - 49) * 0.005; // más grande
+            if (areaCm2 <= 16) return 0.15;
+            if (areaCm2 <= 49) return 0.18;
+            return 0.18 + (areaCm2 - 49) * 0.005;
         }
 
         function initCalculator() {
@@ -646,8 +639,6 @@
                     if (target) {
                         e.preventDefault();
                         target.scrollIntoView({ behavior:'smooth', block:'start' });
-                        document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-                        if (this.classList.contains('nav-item')) this.classList.add('active');
                     }
                 });
             });
