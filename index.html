@@ -77,7 +77,6 @@
         .cart-badge { position:absolute; top:-6px; right:-6px; background:var(--danger); color:#fff; font-size:0.7rem; font-weight:bold; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
         .lang-btn { font-size:0.75rem; font-weight:bold; padding:6px 10px; }
 
-        /* HERO con LOGO */
         .hero { padding:110px 0 60px; text-align:center; background:radial-gradient(circle at top, var(--neon-dim), transparent 70%); }
         .hero-logo-img { max-width:380px; width:85%; margin:0 auto 25px; filter:drop-shadow(0 0 20px rgba(0,255,0,0.3)); }
         .hero p { color:var(--text-muted); font-size:1.1rem; max-width:600px; margin:0 auto 30px; }
@@ -87,7 +86,6 @@
         .btn-outline { border:2px solid var(--neon); color:var(--neon); }
         .hero-buttons { display:flex; gap:15px; justify-content:center; flex-wrap:wrap; }
 
-        /* MARQUEE LOGOS */
         .marquee-section { padding:40px 0; background:var(--surface); border-top:1px solid #222; border-bottom:1px solid #222; overflow:hidden; }
         .marquee-title { text-align:center; color:var(--text-muted); font-size:0.85rem; margin-bottom:25px; text-transform:uppercase; letter-spacing:2px; }
         .marquee-container { display:flex; width:200%; animation:scroll 30s linear infinite; }
@@ -102,7 +100,6 @@
 
         section { padding:60px 0; }
 
-        /* TIENDA */
         .products-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:20px; }
         .product-card { background:var(--surface); border:1px solid #222; border-radius:12px; overflow:hidden; transition:transform 0.3s,border-color 0.3s; }
         .product-card:hover { transform:translateY(-5px); border-color:var(--neon); }
@@ -118,7 +115,6 @@
         .product-price { font-size:1.3rem; font-weight:bold; color:var(--neon); font-family:var(--font-display); }
         .add-btn { background:var(--neon); color:#000; padding:8px 16px; border-radius:6px; font-weight:600; font-size:0.85rem; }
 
-        /* COTIZADOR */
         .calc-box { background:var(--surface); border:1px solid #222; border-radius:12px; padding:30px; max-width:600px; margin:0 auto; }
         .form-group { margin-bottom:20px; }
         .form-group label { display:block; margin-bottom:8px; color:var(--neon); font-size:0.9rem; font-weight:600; }
@@ -131,7 +127,6 @@
         .price-breakdown { font-size:0.85rem; color:var(--text-muted); margin:8px 0; }
         @keyframes fadeIn { from{opacity:0;transform:translateY(10px);} to{opacity:1;transform:translateY(0);} }
 
-        /* DRAWERS */
         .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:200; opacity:0; visibility:hidden; transition:0.3s; }
         .overlay.active { opacity:1; visibility:visible; }
         .drawer { position:fixed; top:0; right:0; width:300px; max-width:85%; height:100%; background:var(--surface); z-index:201; transform:translateX(100%); transition:transform 0.3s ease; display:flex; flex-direction:column; border-left:1px solid #222; }
@@ -146,22 +141,12 @@
         .cart-item-price { color:var(--neon); font-size:0.85rem; }
         .remove-btn { color:var(--danger); font-size:1.2rem; padding:5px; }
 
-        /* WHATSAPP FLOTANTE */
         .whatsapp-float {
-            position:fixed;
-            bottom:25px;
-            right:25px;
-            width:60px;
-            height:60px;
-            background:#25D366;
-            border-radius:50%;
-            display:flex;
-            align-items:center;
-            justify-content:center;
+            position:fixed; bottom:25px; right:25px; width:60px; height:60px;
+            background:#25D366; border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
             box-shadow:0 4px 20px rgba(37,211,102,0.5);
-            z-index:99;
-            animation:pulse 2s infinite;
-            transition:transform 0.3s;
+            z-index:99; animation:pulse 2s infinite; transition:transform 0.3s;
         }
         .whatsapp-float:hover { transform:scale(1.1); }
         .whatsapp-float svg { width:32px; height:32px; fill:white; }
@@ -170,7 +155,6 @@
             50% { box-shadow:0 4px 30px rgba(37,211,102,0.8); }
         }
 
-        /* TOAST */
         .toast-container { position:fixed; bottom:100px; left:50%; transform:translateX(-50%); z-index:300; display:flex; flex-direction:column; gap:10px; pointer-events:none; }
         .toast { background:var(--surface); border:1px solid var(--neon); padding:12px 20px; border-radius:8px; font-size:0.9rem; box-shadow:0 4px 12px rgba(0,0,0,0.5); animation:slideUp 0.3s ease; pointer-events:auto; }
         @keyframes slideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
@@ -204,7 +188,6 @@
         </div>
     </header>
 
-    <!-- MENÚ HAMBURGUESA: SOLO GALERÍA, TÉRMINOS Y PRIVACIDAD -->
     <div class="overlay" id="menu-overlay"></div>
     <div class="drawer" id="menu-drawer">
         <div class="drawer-header">
@@ -231,7 +214,6 @@
         </div>
     </div>
 
-    <!-- CARRITO DRAWER -->
     <div class="overlay" id="cart-overlay"></div>
     <div class="drawer" id="cart-drawer">
         <div class="drawer-header">
@@ -253,7 +235,6 @@
     </div>
 
     <main>
-        <!-- HERO CON LOGO Y SOLO BOTÓN COTIZAR -->
         <section id="inicio" class="hero">
             <div class="container">
                 <img src="images/logoW.png" alt="STIKMANIA" class="hero-logo-img">
@@ -264,7 +245,6 @@
             </div>
         </section>
 
-        <!-- BANNER LOGOS -->
         <div class="marquee-section">
             <p class="marquee-title" data-i18n="marquee_title">Confían en nosotros</p>
             <div class="marquee-container">
@@ -287,7 +267,6 @@
             </div>
         </div>
 
-        <!-- TIENDA -->
         <section id="tienda">
             <div class="container">
                 <h2 class="section-title"><span data-i18n="shop_title_1">Nuestros</span> <span class="text-neon" data-i18n="shop_title_2">Packs</span></h2>
@@ -296,7 +275,6 @@
             </div>
         </section>
 
-        <!-- COTIZADOR -->
         <section id="cotizador" style="background:var(--surface);">
             <div class="container">
                 <h2 class="section-title"><span data-i18n="calc_title_1">Cotizador</span> <span class="text-neon" data-i18n="calc_title_2">Instantáneo</span></h2>
@@ -358,7 +336,6 @@
         </div>
     </footer>
 
-    <!-- BOTÓN FLOTANTE WHATSAPP -->
     <a href="https://wa.me/5359758756" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
         <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
     </a>
@@ -395,12 +372,62 @@
             }
         };
 
+        // === IMÁGENES REALES POR PACK ===
+        const packImages = {
+            anime: [
+                'images/packs/anime/688276755596823488.jfif',
+                'images/packs/anime/IMG-20250514-WA0018.jpg',
+                'images/packs/anime/IMG-20250712-WA0006.jpg',
+                'images/packs/anime/IMG-20250712-WA0012.jpg',
+                'images/packs/anime/IMG-20250928-WA0015.jpg',
+                'images/packs/anime/IMG-20250928-WA0019.jpg',
+                'images/packs/anime/IMG-20250928-WA0044.jpg',
+                'images/packs/anime/IMG-20250928-WA0083.jpg',
+                'images/packs/anime/IMG-20260118-WA0034.jpg'
+            ],
+            gamer: [
+                'images/packs/gamer/9f8206e359e02a41c32643d7df993170.jpg',
+                'images/packs/gamer/8874346b78dd0101d7017af6ebc1f302.jpg',
+                'images/packs/gamer/e65d982fdc233076230fe1c8e1122404.jpg',
+                'images/packs/gamer/IMG_0248.JPG'
+            ],
+            cine: [
+                'images/packs/cine/cover.jpg'
+            ],
+            skate: [
+                'images/packs/skate/64ee883d4b3b8e8bf96f1555f8d2249e.jpg',
+                'images/packs/skate/206373c4-3c55-40c6-b4e6-5e82a6fca928.jpeg',
+                'images/packs/skate/81646917108916f8167ef95011826439.jpg',
+                'images/packs/skate/a7834403233e9f79805c7d3e6964572a.jpg',
+                'images/packs/skate/IMG-20250519-WA0065.jpg',
+                'images/packs/skate/IMG-20251021-WA0098.jpg',
+                'images/packs/skate/IMG-20251209-WA0016.jpg',
+                'images/packs/skate/IMG-20251209-WA0017.jpg',
+                'images/packs/skate/IMG-20251209-WA0020.jpg',
+                'images/packs/skate/IMG-20251209-WA0022.jpg'
+            ],
+            stikmania: [
+                'images/packs/stikmania/Consuelo - sticker.jpg',
+                'images/packs/stikmania/FUCK_AI - Sticker.jpg',
+                'images/packs/stikmania/intuición femenina - Sticker.jpg',
+                'images/packs/stikmania/Jódanse - sticker.jpg',
+                'images/packs/stikmania/mesero en el plato - sticker.jpg',
+                'images/packs/stikmania/no me quemes - sticker.jpg',
+                'images/packs/stikmania/Préndeme - sticker.jpg',
+                'images/packs/stikmania/Sun Love - sticker.jpg',
+                'images/packs/stikmania/cogiendo un aire.png'
+            ],
+            personalizado: [
+                'images/packs/personalizado/cover.jpg'
+            ]
+        };
+
         const products = [
             { id:1, name:"Pack Anime Legendario", nameEn:"Legendary Anime Pack", price:3, desc:"24 stickers de los animes más populares.", descEn:"24 stickers from the most popular anime.", category:"anime", badge:"TOP" },
             { id:2, name:"Pack Gamer Ultimate", nameEn:"Ultimate Gamer Pack", price:4, desc:"30 stickers para laptops y consolas.", descEn:"30 stickers for laptops and consoles.", category:"gamer", badge:null },
             { id:3, name:"Pack Cine y Series", nameEn:"Movies & Series Pack", price:3, desc:"Marvel, Star Wars y clásicos.", descEn:"Marvel, Star Wars and classics.", category:"cine", badge:"NEW" },
             { id:4, name:"Pack Street y Skate", nameEn:"Street & Skate Pack", price:4, desc:"Estilo urbano, Thrasher, Santa Cruz.", descEn:"Urban style, Thrasher, Santa Cruz.", category:"skate", badge:null },
-            { id:5, name:"Pack Stikmania", nameEn:"Stikmania Pack", price:3, desc:"Diseños exclusivos de la casa.", descEn:"Exclusive house designs.", category:"stikmania", badge:"EXCLUSIVE", carousel:true },
+            { id:5, name:"Pack Stikmania", nameEn:"Stikmania Pack", price:3, desc:"Diseños exclusivos de la casa.", descEn:"Exclusive house designs.", category:"stikmania", badge:"EXCLUSIVE" },
             { id:6, name:"Pack Personalizado", nameEn:"Custom Pack", price:2, desc:"Envía tu diseño, nosotros lo imprimimos.", descEn:"Send your design, we print it.", category:"personalizado", badge:null }
         ];
 
@@ -412,18 +439,6 @@
             stikmania:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/></svg>',
             custom:'<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'
         };
-
-        const stikmaniaImages = [
-            'images/packs/stikmania/Consuelo - sticker.jpg',
-            'images/packs/stikmania/FUCK_AI - Sticker.jpg',
-            'images/packs/stikmania/intuición femenina - Sticker.jpg',
-            'images/packs/stikmania/Jódanse - sticker.jpg',
-            'images/packs/stikmania/mesero en el plato - sticker.jpg',
-            'images/packs/stikmania/no me quemes - sticker.jpg',
-            'images/packs/stikmania/Préndeme - sticker.jpg',
-            'images/packs/stikmania/Sun Love - sticker.jpg',
-            'images/packs/stikmania/cogiendo un aire.png'
-        ];
 
         let cart = JSON.parse(localStorage.getItem('stikmania_cart') || '[]');
         let currentLang = localStorage.getItem('stikmania_lang') || 'es';
@@ -465,16 +480,18 @@
 
             const container = document.getElementById('products-container');
             container.innerHTML = products.map(p => {
-                const isCarousel = p.carousel && p.category === 'stikmania';
-                const imgSrc = `images/packs/${p.category}/cover.jpg`;
+                const images = packImages[p.category] || [];
+                const hasMultipleImages = images.length > 1;
+                const firstImage = images.length > 0 ? images[0] : `images/packs/${p.category}/cover.jpg`;
+                const fallbackIcon = productIcons[p.category] || productIcons.custom;
                 
                 return `
                     <div class="product-card" data-category="${p.category}">
-                        <div class="product-img" ${isCarousel ? 'data-carousel="true"' : ''}>
+                        <div class="product-img" ${hasMultipleImages ? 'data-carousel="true" data-category="'+p.category+'"' : ''}>
                             ${p.badge ? `<span class="badge ${p.badge==='NEW'?'new':''}">${p.badge}</span>` : ''}
-                            ${isCarousel ? 
-                                `<img src="${stikmaniaImages[0]}" alt="${p.name}" class="carousel-img" loading="lazy" style="opacity:1;">` :
-                                `<img src="${imgSrc}" alt="${p.name}" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','${productIcons[p.category]||''}')" loading="lazy">`
+                            ${hasMultipleImages ? 
+                                `<img src="${firstImage}" alt="${p.name}" class="carousel-img" loading="lazy" style="opacity:1;">` :
+                                `<img src="${firstImage}" alt="${p.name}" onerror="this.style.display='none'; this.parentElement.insertAdjacentHTML('beforeend','${fallbackIcon}')" loading="lazy">`
                             }
                         </div>
                         <div class="product-info">
@@ -496,14 +513,17 @@
             const carouselCards = document.querySelectorAll('[data-carousel="true"]');
             carouselCards.forEach(card => {
                 const img = card.querySelector('.carousel-img');
-                if (!img) return;
+                const category = card.dataset.category;
+                const images = packImages[category] || [];
+                
+                if (!img || images.length <= 1) return;
                 
                 let currentIndex = 0;
                 const interval = setInterval(() => {
-                    currentIndex = (currentIndex + 1) % stikmaniaImages.length;
+                    currentIndex = (currentIndex + 1) % images.length;
                     img.style.opacity = '0';
                     setTimeout(() => {
-                        img.src = stikmaniaImages[currentIndex];
+                        img.src = images[currentIndex];
                         img.style.opacity = '1';
                     }, 400);
                 }, 2500);
