@@ -1,0 +1,33 @@
+{
+  "name": "STIKMANIA - Stickers Personalizados en Cuba",
+  "short_name": "STIKMANIA",
+  "description": "Tienda de stickers, etiquetas y empaques personalizados en La Habana, Cuba. Vinilo impermeable de alta calidad.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#050505",
+  "theme_color": "#00FF00",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "categories": ["shopping", "business", "lifestyle"],
+  "icons": [
+    {
+      "src": "images/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "images/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshot-mobile.png",
+      "sizes": "540x720",
+      "type": "image/png"
+    }
+  ]
+}

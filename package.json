@@ -1,0 +1,27 @@
+{
+  "name": "stikmania",
+  "version": "1.0.0",
+  "description": "STIKMANIA - Tienda de stickers personalizados en Cuba",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static site - no build needed'",
+    "deploy": "gh-pages -d ."
+  },
+  "keywords": [
+    "stickers",
+    "cuba",
+    "havana",
+    "branding",
+    "packaging",
+    "labels",
+    "vinyl",
+    "custom"
+  ],
+  "author": "STIKMANIA",
+  "license": "MIT",
+  "devDependencies": {
+    "gh-pages": "^6.1.0",
+    "serve": "^14.2.0"
+  }
+}
