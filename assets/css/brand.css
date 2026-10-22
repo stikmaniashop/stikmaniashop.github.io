@@ -1,0 +1,48 @@
+/* ============================================
+   STIKMANIA - Identidad de Marca v2
+   Tipografía: Marker2 | Slogan: Tallas que se pegan
+   ============================================ */
+
+/* === FUENTE DE MARCA === */
+@font-face {
+    font-family: 'Marker2';
+    src: url('../fonts/Marker2.woff2') format('woff2'),
+         url('../fonts/Marker2.otf') format('opentype'),
+         url('../fonts/Marker2.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* === OVERRIDE DE VARIABLES (gana sobre el <style> inline) === */
+:root {
+    --font-display: 'Marker2', 'Segoe Print', 'Comic Sans MS', cursive;
+}
+
+/* === TIPOGRAFÍA APLICADA === */
+h1, h2, h3, .logo {
+    font-family: var(--font-display);
+    letter-spacing: 0.5px;
+    font-weight: normal;
+}
+
+.logo { font-size: 1.5rem; }
+.section-title { letter-spacing: 1px; }
+.pack-card .card-name { letter-spacing: 0.5px; font-size: 1.35rem; }
+.pack-modal-title { letter-spacing: 0.5px; }
+.result-price { letter-spacing: 1px; }
+.drawer-header h3 { letter-spacing: 1px; }
+
+/* === LOGO HERO === */
+.hero-logo-img {
+    max-width: 340px;
+    width: 80%;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 0 25px rgba(0, 255, 0, 0.25));
+}
+
+/* === SELECCIÓN DE TEXTO CON COLOR DE MARCA === */
+::selection {
+    background: var(--neon);
+    color: #000;
+}
