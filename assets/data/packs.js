@@ -1,14 +1,63 @@
 /* ============================================
-   STIKMANIA - Datos de Packs y Stickers v3
-   Los precios se calculan solos (PriceEngine).
-   catsMode: 'merge' | 'declared' | 'union'
+   STIKMANIA - Datos + Motor de Precios v3.1
+   ARCHIVO ÚNICO: no depende de ningún otro JS.
    ============================================ */
 
-window.PACKS_CONFIG = {
-    folderBase: 'images/packs/',
-    catsMode: 'merge'   // merge = tags declarados + tags de stickers
+/* === MOTOR DE PRECIOS (antes vivía en prices.js) === */
+window.PRICING = {
+    standard: { w: 6, h: 6 },
+    tiers: [
+        { maxArea: 16, price: 0.15 },
+        { maxArea: 49, price: 0.18 }
+    ],
+    extraCm2: 0.005,
+    materials: { vinyl: 1, paper: 0.7, transparent: 1.3 },
+    packRoundStep: 0.5,
+    wholesale: [
+        { min: 50,  off: 0.10 },
+        { min: 100, off: 0.15 },
+        { min: 500, off: 0.20 }
+    ]
 };
 
+window.PriceEngine = {
+    area(w, h) { return w * h; },
+    baseUnit(w, h) {
+        const a = this.area(w, h);
+        for (const t of PRICING.tiers) if (a <= t.maxArea) return t.price;
+        const last = PRICING.tiers[PRICING.tiers.length - 1];
+        return last.price + (a - last.maxArea) * PRICING.extraCm2;
+    },
+    unit(w, h, mat) {
+        const m = (mat && PRICING.materials[mat]) || 1;
+        return this.baseUnit(w, h) * m;
+    },
+    ceilTo(x, step) { return Math.ceil((x / step) - 1e-9) * step; },
+    ceilCent(x) { return Math.ceil((x * 100) - 1e-9) / 100; },
+    packPrice(count, mat) {
+        const raw = count * this.unit(PRICING.standard.w, PRICING.standard.h, mat || 'vinyl');
+        return this.ceilTo(raw, PRICING.packRoundStep);
+    },
+    stickerPrice(w, h, mat) {
+        return this.ceilCent(this.unit(w || PRICING.standard.w, h || PRICING.standard.h, mat || 'vinyl'));
+    },
+    wholesaleOff(units) {
+        let off = 0;
+        for (const t of PRICING.wholesale) if (units >= t.min) off = t.off;
+        return off;
+    },
+    wholesaleLabel() {
+        return PRICING.wholesale.map(t => t.min + '+: −' + Math.round(t.off * 100) + '%').join(' · ');
+    }
+};
+
+/* === CONFIG === */
+window.PACKS_CONFIG = {
+    folderBase: 'images/packs/',
+    catsMode: 'merge'
+};
+
+/* === DATOS: 17 PACKS === */
 window.PACKS_DATA = [
     {
         id:'argolitos', name:'ARGOLITOS', folder:'argolitos',
@@ -192,7 +241,7 @@ window.PACKS_DATA = [
     }
 ];
 
-/* === Procesamiento automático (no tocar) === */
+/* === PROCESAMIENTO BLINDADO === */
 (function () {
     function cleanName(f) {
         return f
@@ -202,30 +251,43 @@ window.PACKS_DATA = [
             .trim()
             .replace(/\b\w/g, c => c.toUpperCase());
     }
+    const PE = window.PriceEngine;
     const mode = (window.PACKS_CONFIG && window.PACKS_CONFIG.catsMode) || 'merge';
 
-    window.PACKS_DATA.forEach(p => {
-        p.stickers.forEach((s, i) => {
-            s.sid = p.id + '-' + i;
-            s.name = s.name || cleanName(s.file);
-            s.cats = s.cats || [];
-            s.src = window.PACKS_CONFIG.folderBase + (p.folder || p.id) + '/' + s.file;
-            if (s.alt) s.srcAlt = window.PACKS_CONFIG.folderBase + (p.folder || p.id) + '/' + s.alt;
-            s.price = window.PriceEngine.stickerPrice(s.w, s.h);
-            s.units = 1;
-        });
+    (window.PACKS_DATA || []).forEach(p => {
+        try {
+            p.stickers = p.stickers || [];
+            p.stickers.forEach((s, i) => {
+                s.sid = p.id + '-' + i;
+                s.name = s.name || cleanName(s.file);
+                s.cats = s.cats || [];
+                s.src = window.PACKS_CONFIG.folderBase + (p.folder || p.id) + '/' + s.file;
+                if (s.alt) s.srcAlt = window.PACKS_CONFIG.folderBase + (p.folder || p.id) + '/' + s.alt;
+                s.price = PE.stickerPrice(s.w, s.h);
+                s.units = 1;
+            });
 
-        const union = new Set();
-        p.stickers.forEach(s => s.cats.forEach(c => union.add(c)));
-        p.union = Array.from(union);
+            const union = new Set();
+            p.stickers.forEach(s => s.cats.forEach(c => union.add(c)));
+            p.union = Array.from(union);
 
-        if (mode === 'union') p.cats = p.union;
-        else if (mode === 'declared') p.cats = p.cats || p.union;
-        else p.cats = Array.from(new Set([...(p.cats || []), ...p.union]));
+            if (mode === 'union') p.cats = p.union;
+            else if (mode === 'declared') p.cats = p.cats || p.union;
+            else p.cats = Array.from(new Set([...(p.cats || []), ...p.union]));
 
-        p.images = p.stickers.map(s => s.src);
-        p.imagesAlt = p.stickers.map(s => s.srcAlt || s.src);
-        p.price = window.PriceEngine.packPrice(p.stickers.length);
-        p.units = p.stickers.length;
+            p.images = p.stickers.map(s => s.src);
+            p.imagesAlt = p.stickers.map(s => s.srcAlt || s.src);
+            p.price = (typeof p.price === 'number') ? p.price : PE.packPrice(p.stickers.length);
+            p.units = p.stickers.length;
+        } catch (e) {
+            // Un pack con error NUNCA tumba al resto: queda visible y marcado
+            console.warn('⚠️ Pack con problemas:', (p && p.id) || 'desconocido', e);
+            p.stickers = p.stickers || [];
+            p.images = p.images || [];
+            p.imagesAlt = p.imagesAlt || [];
+            p.cats = p.cats || [];
+            p.price = (typeof p.price === 'number') ? p.price : 0;
+            p.units = p.units || 0;
+        }
     });
 })();
