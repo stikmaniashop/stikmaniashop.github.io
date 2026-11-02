@@ -1,9 +1,9 @@
 /* ============================================
-   STIKMANIA - Datos + Motor de Precios v3.1
-   ARCHIVO ÚNICO: no depende de ningún otro JS.
+   STIKMANIA - Datos + Motor de Precios v3.2
+   ARCHIVO ÚNICO, sin dependencias.
+   v3.2: carpetas con nombres EXACTOS del repo.
    ============================================ */
 
-/* === MOTOR DE PRECIOS (antes vivía en prices.js) === */
 window.PRICING = {
     standard: { w: 6, h: 6 },
     tiers: [
@@ -51,16 +51,14 @@ window.PriceEngine = {
     }
 };
 
-/* === CONFIG === */
 window.PACKS_CONFIG = {
     folderBase: 'images/packs/',
     catsMode: 'merge'
 };
 
-/* === DATOS: 17 PACKS === */
 window.PACKS_DATA = [
     {
-        id:'argolitos', name:'ARGOLITOS', folder:'argolitos',
+        id:'argolitos', name:'ARGOLITOS', folder:'Argolitos',
         cats:['gato','letrero','animales','plant','tech','argot','stikmania'],
         stickers:[
             { file:'burundanga cat.jpg', cats:['stikmania','gato','argot'] },
@@ -75,7 +73,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'dislexia', name:'DISLEXIA', folder:'dislexia',
+        id:'dislexia', name:'DISLEXIA', folder:'DISLEXIA',
         cats:['stikmania','plant','minimalista'],
         stickers:[
             { file:'mesero en el plato - sticker.jpg', cats:['stikmania','minimalista'] },
@@ -83,7 +81,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'drop-dead', name:'DROP-DEAD', folder:'drop-dead',
+        id:'drop-dead', name:'DROP-DEAD', folder:'DROP-DEAD',
         cats:['stikmania','gato','animales','calavera','pyschodelic'],
         stickers:[
             { file:'dead cat.jpg', cats:['gato'] },
@@ -96,21 +94,21 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'energy', name:'ENERGY', folder:'energy',
+        id:'energy', name:'ENERGY', folder:'ENERGY',
         cats:['energy'],
         stickers:[
             { file:'OJOturco.jpg', cats:['energy'] }
         ]
     },
     {
-        id:'fooder', name:'FOODER', folder:'fooder',
+        id:'fooder', name:'FOODER', folder:'FOODer',
         cats:['food'],
         stickers:[
             { file:'avocato.jpg', cats:['food'] }
         ]
     },
     {
-        id:'funter', name:'FUNTER', folder:'funter',
+        id:'funter', name:'FUNTER', folder:'FUNTER',
         cats:['stikmania','letrero','minimalista','tech','music'],
         stickers:[
             { file:'artistcheck.jpg', cats:['letrero'] },
@@ -121,7 +119,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'he-arts', name:'HE ARTS', folder:'he-arts',
+        id:'he-arts', name:'HE ARTS', folder:'HE ARTS',
         cats:['stikmania','heart'],
         stickers:[
             { file:'1.jpg', cats:['heart'] },
@@ -134,7 +132,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'illus', name:'ILLUS', folder:'illus',
+        id:'illus', name:'ILLUS', folder:'ILLUS',
         cats:['stikmania','sk8','animales','girl','gato'],
         stickers:[
             { file:'Batmanmoco.jpg', cats:['stikmania'] },
@@ -147,14 +145,14 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'line', name:'LINE', folder:'line',
+        id:'line', name:'LINE', folder:'LINE',
         cats:['minimalista','gato'],
         stickers:[
             { file:'fukcat.jpg', cats:['minimalista','gato'] }
         ]
     },
     {
-        id:'los-salvajes', name:'LOS SALVAJES', folder:'los-salvajes',
+        id:'los-salvajes', name:'LOS SALVAJES', folder:'LOS SALVAJES',
         cats:['stikmania','letrero','sk8','gato','animales','pyschodelic'],
         stickers:[
             { file:'cerdo volador.jpg', cats:['animales','stikmania'] },
@@ -166,7 +164,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'mad-girls', name:'MAD GIRLS', folder:'mad-girls',
+        id:'mad-girls', name:'MAD GIRLS', folder:'MAD-GIRLS',
         cats:['stikmania','pyschodelic','girl','letrero'],
         stickers:[
             { file:'blue eyes smoking.jpg', cats:['girl'] },
@@ -177,7 +175,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'noncritics', name:'NONCRITICS', folder:'noncritics',
+        id:'noncritics', name:'NONCRITICS', folder:'Noncritics',
         cats:['stikmania','food','letrero'],
         stickers:[
             { file:'comunista cleaner.jpg', cats:['stikmania','tech'] },
@@ -185,7 +183,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'psycker', name:'PSYCKER', folder:'psycker',
+        id:'psycker', name:'PSYCKER', folder:'PSYCKER',
         cats:['stikmania','pyschodelic'],
         stickers:[
             { file:'clancy.jpg', cats:['pyschodelic'] },
@@ -194,7 +192,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'sk8-ur-vans', name:'SK8-UR-VANS', folder:'sk8-ur-vans',
+        id:'sk8-ur-vans', name:'SK8-UR-VANS', folder:'SK8-UR-VANS',
         cats:['stikmania','sk8'],
         stickers:[
             { file:'aliensk8ter.jpg', cats:['sk8','stikmania'] },
@@ -211,7 +209,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'smiley-face', name:'SMILEY FACE', folder:'smiley-face',
+        id:'smiley-face', name:'SMILEY FACE', folder:'SmileyFACE',
         cats:['stikmania','pyschodelic'],
         stickers:[
             { file:'1.jpg', cats:['pyschodelic','stikmania'] },
@@ -219,7 +217,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'tra-neo', name:'TRA-NEO', folder:'tra-neo',
+        id:'tra-neo', name:'TRA-NEO', folder:'TRA-NEO',
         cats:['stikmania','animales'],
         stickers:[
             { file:'butterfly.jpg', cats:['animales'] },
@@ -231,7 +229,7 @@ window.PACKS_DATA = [
         ]
     },
     {
-        id:'xxx', name:'XXX', folder:'xxx',
+        id:'xxx', name:'XXX', folder:'XXX',
         cats:['18+'],
         stickers:[
             { file:'xxx_1.jpg', cats:['18+'] },
@@ -280,7 +278,6 @@ window.PACKS_DATA = [
             p.price = (typeof p.price === 'number') ? p.price : PE.packPrice(p.stickers.length);
             p.units = p.stickers.length;
         } catch (e) {
-            // Un pack con error NUNCA tumba al resto: queda visible y marcado
             console.warn('⚠️ Pack con problemas:', (p && p.id) || 'desconocido', e);
             p.stickers = p.stickers || [];
             p.images = p.images || [];
