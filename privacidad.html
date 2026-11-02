@@ -2,281 +2,339 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-es="Política de Privacidad | STIKMANIA" data-en="Privacy Policy | STIKMANIA">Política de Privacidad | STIKMANIA</title>
-    <meta name="description" content="Política de privacidad de STIKMANIA. Cómo protegemos tus datos personales.">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="images/favicon.png">
-    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
-    <link rel="apple-touch-icon" href="images/favicon.png">
-    
-    <!-- Google Fonts -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <!-- === OPEN GRAPH: vista previa en WhatsApp, Telegram, Facebook === -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="STIKMANIA">
+    <meta property="og:title" content="STIKMANIA | Política de Privacidad">
+    <meta property="og:description" content="Transparencia total: qué datos recopilamos y cómo los usamos en STIKMANIA, Cuba.">
+    <meta property="og:url" content="https://stikmania-tm.github.io/privacidad.html">
+    <meta property="og:image" content="https://stikmania-tm.github.io/images/OG_IMAGE.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="STIKMANIA — Tallas que se pegan">
+    <meta property="og:locale" content="es_CU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="STIKMANIA | Política de Privacidad">
+    <meta name="twitter:description" content="Transparencia total: qué datos recopilamos y cómo los usamos en STIKMANIA, Cuba.">
+    <meta name="twitter:image" content="https://stikmania-tm.github.io/images/OG_IMAGE.png">
+
+    <title>Política de Privacidad | STIKMANIA</title>
+    <meta name="description" content="Política de privacidad de STIKMANIA: cómo tratamos tus datos personales en Cuba.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00FF00">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png">
+    <link rel="shortcut icon" href="images/favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Pirata+One&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+        @font-face {
+            font-family: 'Permanent Marker';
+            src: url('assets/fonts/PermanentMarker-Regular.ttf') format('truetype'),
+                 url('assets/fonts/PermanentMarker.ttf') format('truetype'),
+                 url('assets/fonts/permanent-marker-regular.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+            font-display: swap;
+        }
         :root {
-            --neon-green: #00FF00;
-            --dark-green: #003300;
-            --black: #000000;
-            --white: #FFFFFF;
-            --gray: #1a1a1a;
+            --neon:#00FF00; --neon-dim:rgba(0,255,0,0.08); --neon-glow:rgba(0,255,0,0.4);
+            --bg:#050505; --surface:#0f0f0f; --surface-light:#1a1a1a;
+            --text:#fff; --text-muted:#888; --radius:8px; --radius-lg:16px;
+            --font-display:'Permanent Marker','Marker2','Segoe Print',cursive;
+            --font-body:'Inter',system-ui,sans-serif;
+            --ease-out:cubic-bezier(0.4,0,0.2,1);
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.8;
-            padding: 100px 20px;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        h1 {
-            font-family: 'Pirata One', display;
-            color: var(--neon-green);
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-        
-        h2 {
-            font-family: 'Inter', sans-serif;
-            color: var(--neon-green);
-            font-size: 1.5rem;
-            margin-top: 40px;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .last-update {
-            text-align: center;
-            color: var(--neon-green);
-            margin-bottom: 40px;
-            font-size: 0.9rem;
-        }
-        
-        p {
-            margin-bottom: 20px;
-            color: #ccc;
-        }
-        
-        ul, ol {
-            margin-bottom: 20px;
-            padding-left: 30px;
-            color: #ccc;
-        }
-        
-        li {
-            margin-bottom: 10px;
-        }
-        
-        a {
-            color: var(--neon-green);
-        }
-        
-        a:hover {
-            text-decoration: underline;
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 40px;
-            padding: 12px 24px;
-            background: var(--neon-green);
-            color: var(--black);
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-        }
-        
-        .back-link:hover {
-            background: var(--white);
-            text-decoration: none;
-        }
-        
-        /* LANGUAGE SWITCHER */
-        .lang-switch {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1001;
-        }
-        
-        .lang-btn {
-            background: var(--black);
-            border: 2px solid var(--neon-green);
-            color: var(--neon-green);
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-        
-        .lang-btn:hover {
-            background: var(--neon-green);
-            color: var(--black);
-        }
-        
-        /* MOBILE */
-        @media (max-width: 768px) {
-            body {
-                padding: 80px 15px;
-            }
-            
-            h1 {
-                font-size: 2rem;
-            }
-            
-            h2 {
-                font-size: 1.3rem;
-            }
-            
-            .lang-switch {
-                top: 10px;
-                right: 10px;
-            }
+        * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+        html { scroll-behavior:smooth; }
+        body { font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.5; overflow-x:hidden; }
+        a { text-decoration:none; color:inherit; }
+        button { font-family:inherit; cursor:pointer; border:none; background:none; }
+        .container { max-width:1200px; margin:0 auto; padding:0 16px; }
+        ::selection { background:var(--neon); color:#000; }
+        h1,h2,h3,.logo { font-family:var(--font-display); letter-spacing:0.5px; font-weight:normal; }
+        .logo { font-size:1.5rem; color:var(--neon); }
+        .text-neon { color:var(--neon); }
+
+        header { position:fixed; top:0; width:100%; background:rgba(5,5,5,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid #222; padding:12px 0; }
+        .header-inner { display:flex; justify-content:space-between; align-items:center; }
+        .icon-btn { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border:1px solid var(--neon); border-radius:var(--radius); color:var(--neon); transition:all 0.2s var(--ease-out); }
+        .icon-btn:hover { background:var(--neon-dim); }
+        .icon-btn svg { width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:2; }
+
+        .page-hero { padding:130px 0 40px; text-align:center; background:radial-gradient(circle at top, var(--neon-dim), transparent 70%); }
+        .hero-badge { display:inline-block; background:var(--neon-dim); border:1px solid var(--neon); padding:6px 16px; border-radius:50px; font-size:0.75rem; color:var(--neon); font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px; font-family:var(--font-body); }
+        .page-hero h1 { font-size:2.2rem; line-height:1.15; max-width:700px; margin:0 auto 14px; letter-spacing:1px; }
+        .legal-meta { color:var(--text-muted); font-size:0.85rem; }
+
+        .legal-wrap { max-width:800px; margin:0 auto; padding:20px 16px 60px; }
+        .legal-item { background:var(--surface); border:1px solid #222; border-radius:12px; padding:24px; margin-bottom:16px; transition:border-color 0.3s var(--ease-out); }
+        .legal-item:hover { border-color:#333; }
+        .legal-item h2 { color:var(--neon); font-size:1.2rem; margin-bottom:12px; letter-spacing:0.5px; }
+        .legal-item p, .legal-item li { color:#ccc; font-size:0.92rem; line-height:1.7; margin-bottom:8px; }
+        .legal-item p:last-child, .legal-item li:last-child { margin-bottom:0; }
+        .legal-item ul { padding-left:20px; margin:8px 0; }
+        .legal-item strong { color:var(--text); }
+        .legal-item a { color:var(--neon); }
+
+        .cta-final { padding:60px 0; text-align:center; background:radial-gradient(circle at bottom, var(--neon-dim), transparent 70%); }
+        .cta-final h2 { font-size:1.8rem; margin-bottom:14px; letter-spacing:1px; }
+        .cta-final p { color:var(--text-muted); margin-bottom:28px; font-size:0.95rem; }
+        .cta-buttons { display:flex; gap:14px; justify-content:center; flex-wrap:wrap; }
+        .btn { display:inline-block; padding:13px 26px; border-radius:var(--radius); font-weight:600; font-size:0.95rem; transition:all 0.2s var(--ease-out); font-family:var(--font-body); }
+        .btn:active { transform:scale(0.95); }
+        .btn-primary { background:var(--neon); color:#000; }
+        .btn-primary:hover { background:#33ff33; box-shadow:0 0 20px var(--neon-glow); }
+        .btn-outline { border:2px solid var(--neon); color:var(--neon); }
+        .btn-outline:hover { background:var(--neon); color:#000; }
+
+        .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:200; opacity:0; visibility:hidden; transition:0.3s; }
+        .overlay.active { opacity:1; visibility:visible; }
+        .drawer { position:fixed; top:0; right:0; width:300px; max-width:85%; height:100%; background:var(--surface); z-index:201; transform:translateX(100%); transition:transform 0.3s var(--ease-out); display:flex; flex-direction:column; border-left:1px solid #222; }
+        .drawer.active { transform:translateX(0); }
+        .drawer-header { padding:20px; border-bottom:1px solid #222; display:flex; justify-content:space-between; align-items:center; }
+        .drawer-header h3 { color:var(--neon); font-family:var(--font-display); letter-spacing:1px; }
+        .drawer-body { flex:1; overflow-y:auto; padding:20px; }
+        .menu-link { font-size:1.1rem; display:block; padding:12px 10px; border-radius:var(--radius); transition:all 0.2s var(--ease-out); }
+        .menu-link:hover { background:var(--surface-light); color:var(--neon); }
+        .menu-link svg { width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:2; vertical-align:middle; margin-right:12px; }
+        .menu-link.current { color:var(--neon); background:var(--neon-dim); }
+
+        .whatsapp-float { position:fixed; bottom:25px; right:25px; width:60px; height:60px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.5); z-index:99; animation:pulse 2s infinite; transition:transform 0.3s; }
+        .whatsapp-float:hover { transform:scale(1.1); }
+        .whatsapp-float svg { width:32px; height:32px; fill:white; }
+        @keyframes pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.5);} 50%{box-shadow:0 4px 30px rgba(37,211,102,0.8);} }
+
+        .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+
+        footer { background:#000; padding:40px 0 20px; text-align:center; color:var(--text-muted); font-size:0.85rem; border-top:1px solid #222; }
+        .footer-links { display:flex; justify-content:center; gap:20px; margin:20px 0; flex-wrap:wrap; }
+        .footer-links a:hover { color:var(--neon); }
+
+        @media (min-width:768px) {
+            .page-hero h1 { font-size:3rem; }
+            .legal-item { padding:32px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- LANGUAGE SWITCHER -->
-    <div class="lang-switch">
-        <button class="lang-btn" id="langToggle" onclick="toggleLanguage()">EN</button>
-    </div>
+    <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">STIKMANIA</a>
+            <button class="icon-btn" id="menu-btn" aria-label="Menú">
+                <svg viewBox="0 0 24 24"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
 
-    <div class="container">
-        <h1 data-es="POLÍTICA DE PRIVACIDAD" data-en="PRIVACY POLICY">POLÍTICA DE PRIVACIDAD</h1>
-        <p class="last-update">
-            <strong data-es="Última actualización:" data-en="Last updated:">Última actualización:</strong> 
-            <span data-es="Enero 2026" data-en="January 2026">Enero 2026</span>
-        </p>
-        
-        <h2 data-es="1. RESPONSABLE DEL TRATAMIENTO" data-en="1. DATA CONTROLLER">1. RESPONSABLE DEL TRATAMIENTO</h2>
-        <p>
-            <strong>STIKMANIA</strong><br>
-            <span data-es="La Habana, Cuba" data-en="Havana, Cuba">La Habana, Cuba</span><br>
-            <span data-es="Email: stikmania795@gmail.com" data-en="Email: stikmania795@gmail.com">Email: stikmania795@gmail.com</span><br>
-            <span data-es="Teléfono: +53 5 975 8756" data-en="Phone: +53 5 975 8756">Teléfono: +53 5 975 8756</span>
-        </p>
-        
-        <h2 data-es="2. DATOS QUE RECOPILAMOS" data-en="2. DATA WE COLLECT">2. DATOS QUE RECOPILAMOS</h2>
-        <p data-es="Recopilamos únicamente los datos necesarios para prestar nuestros servicios:" data-en="We collect only the data necessary to provide our services:">Recopilamos únicamente los datos necesarios para prestar nuestros servicios:</p>
-        <ul>
-            <li data-es="Datos de contacto: Nombre completo, número de teléfono, correo electrónico" data-en="Contact data: Full name, phone number, email address">Datos de contacto: Nombre completo, número de teléfono, correo electrónico</li>
-            <li data-es="Datos del proyecto: Descripción del negocio, requisitos del diseño, archivos proporcionados" data-en="Project data: Business description, design requirements, provided files">Datos del proyecto: Descripción del negocio, requisitos del diseño, archivos proporcionados</li>
-            <li data-es="Datos de pago: Método de pago preferido (no almacenamos datos bancarios)" data-en="Payment data: Preferred payment method (we do not store bank data)">Datos de pago: Método de pago preferido (no almacenamos datos bancarios)</li>
-        </ul>
-        
-        <h2 data-es="3. FINALIDAD DEL TRATAMIENTO" data-en="3. PURPOSE OF PROCESSING">3. FINALIDAD DEL TRATAMIENTO</h2>
-        <p data-es="Usamos tus datos exclusivamente para:" data-en="We use your data exclusively for:">Usamos tus datos exclusivamente para:</p>
-        <ul>
-            <li data-es="Comunicación sobre el proyecto (presupuestos, avances, entregas)" data-en="Project communication (quotes, progress, deliveries)">Comunicación sobre el proyecto (presupuestos, avances, entregas)</li>
-            <li data-es="Procesamiento de pagos" data-en="Payment processing">Procesamiento de pagos</li>
-            <li data-es="Envío de productos físicos (stickers)" data-en="Shipping of physical products (stickers)">Envío de productos físicos (stickers)</li>
-            <li data-es="Soporte post-venta" data-en="After-sales support">Soporte post-venta</li>
-            <li data-es="Facturación (cuando aplique)" data-en="Billing (when applicable)">Facturación (cuando aplique)</li>
-        </ul>
-        
-        <h2 data-es="4. BASE LEGAL" data-en="4. LEGAL BASIS">4. BASE LEGAL</h2>
-        <p data-es="El tratamiento de tus datos se basa en:" data-en="The processing of your data is based on:">El tratamiento de tus datos se basa en:</p>
-        <ul>
-            <li data-es="Ejecución de contrato: Para prestar los servicios contratados" data-en="Contract execution: To provide contracted services">Ejecución de contrato: Para prestar los servicios contratados</li>
-            <li data-es="Consentimiento: Para envío de comunicaciones comerciales (puedes darte de baja cuando quieras)" data-en="Consent: For sending commercial communications (you can unsubscribe anytime)">Consentimiento: Para envío de comunicaciones comerciales (puedes darte de baja cuando quieras)</li>
-            <li data-es="Obligación legal: Para facturación y contabilidad" data-en="Legal obligation: For billing and accounting">Obligación legal: Para facturación y contabilidad</li>
-        </ul>
-        
-        <h2 data-es="5. DESTINATARIOS" data-en="5. RECIPIENTS">5. DESTINATARIOS</h2>
-        <p data-es="No compartimos tus datos con terceros." data-en="We do not share your data with third parties.">No compartimos tus datos con terceros.</p>
-        <p data-es="Excepciones:" data-en="Exceptions:">Excepciones:</p>
-        <ul>
-            <li data-es="Proveedores de hosting (solo para proyectos web, bajo contrato de confidencialidad)" data-en="Hosting providers (only for web projects, under confidentiality agreement)">Proveedores de hosting (solo para proyectos web, bajo contrato de confidencialidad)</li>
-            <li data-es="Autoridades competentes (solo por obligación legal)" data-en="Competent authorities (only by legal obligation)">Autoridades competentes (solo por obligación legal)</li>
-        </ul>
-        
-        <h2 data-es="6. CONSERVACIÓN DE DATOS" data-en="6. DATA RETENTION">6. CONSERVACIÓN DE DATOS</h2>
-        <p data-es="Conservamos tus datos durante:" data-en="We retain your data for:">Conservamos tus datos durante:</p>
-        <ul>
-            <li data-es="Proyectos activos: Mientras dure el proyecto + 1 año" data-en="Active projects: Duration of project + 1 year">Proyectos activos: Mientras dure el proyecto + 1 año</li>
-            <li data-es="Facturación: 5 años (obligación legal)" data-en="Billing: 5 years (legal obligation)">Facturación: 5 años (obligación legal)</li>
-            <li data-es="Comunicaciones comerciales: Hasta que te des de baja" data-en="Commercial communications: Until you unsubscribe">Comunicaciones comerciales: Hasta que te des de baja</li>
-        </ul>
-        
-        <h2 data-es="7. TUS DERECHOS" data-en="7. YOUR RIGHTS">7. TUS DERECHOS</h2>
-        <p data-es="Tienes derecho a:" data-en="You have the right to:">Tienes derecho a:</p>
-        <ul>
-            <li data-es="Acceso: Solicitar copia de tus datos" data-en="Access: Request copy of your data">Acceso: Solicitar copia de tus datos</li>
-            <li data-es="Rectificación: Corregir datos incorrectos" data-en="Rectification: Correct incorrect data">Rectificación: Corregir datos incorrectos</li>
-            <li data-es="Supresión: Solicitar eliminación de datos (cuando no haya obligación legal de conservarlos)" data-en="Erasure: Request data deletion (when no legal obligation to retain)">Supresión: Solicitar eliminación de datos (cuando no haya obligación legal de conservarlos)</li>
-            <li data-es="Oposición: Oponerte al tratamiento para comunicaciones comerciales" data-en="Objection: Object to processing for commercial communications">Oposición: Oponerte al tratamiento para comunicaciones comerciales</li>
-            <li data-es="Portabilidad: Recibir tus datos en formato estructurado" data-en="Portability: Receive your data in structured format">Portabilidad: Recibir tus datos en formato estructurado</li>
-        </ul>
-        <p data-es="Para ejercer tus derechos: stikmania795@gmail.com" data-en="To exercise your rights: stikmania795@gmail.com">Para ejercer tus derechos: stikmania795@gmail.com</p>
-        
-        <h2 data-es="8. SEGURIDAD" data-en="8. SECURITY">8. SEGURIDAD</h2>
-        <p data-es="Implementamos medidas técnicas y organizativas para proteger tus datos:" data-en="We implement technical and organizational measures to protect your data:">Implementamos medidas técnicas y organizativas para proteger tus datos:</p>
-        <ul>
-            <li data-es="Almacenamiento en dispositivos con contraseña" data-en="Storage on password-protected devices">Almacenamiento en dispositivos con contraseña</li>
-            <li data-es="Comunicación cifrada (WhatsApp, email)" data-en="Encrypted communication (WhatsApp, email)">Comunicación cifrada (WhatsApp, email)</li>
-            <li data-es="Acceso restringido al CEO (Adrián González)" data-en="Restricted access to CEO (Adrián González)">Acceso restringido al CEO (Adrián González)</li>
-        </ul>
-        
-        <h2 data-es="9. COOKIES" data-en="9. COOKIES">9. COOKIES</h2>
-        <p data-es="Nuestra web usa Google Analytics (cookies analíticas anónimas). Puedes desactivarlas en tu navegador." data-en="Our website uses Google Analytics (anonymous analytical cookies). You can disable them in your browser.">Nuestra web usa Google Analytics (cookies analíticas anónimas). Puedes desactivarlas en tu navegador.</p>
-        
-        <h2 data-es="10. MENORES DE EDAD" data-en="10. MINORS">10. MENORES DE EDAD</h2>
-        <p data-es="No recopilamos datos de menores de 18 años. Si eres menor, necesitas autorización de un tutor para contratar nuestros servicios." data-en="We do not collect data from minors under 18. If you are a minor, you need guardian authorization to contract our services.">No recopilamos datos de menores de 18 años. Si eres menor, necesitas autorización de un tutor para contratar nuestros servicios.</p>
-        
-        <h2 data-es="11. CAMBIOS EN LA POLÍTICA" data-en="11. POLICY CHANGES">11. CAMBIOS EN LA POLÍTICA</h2>
-        <p data-es="Nos reservamos el derecho de modificar esta política. Los cambios se publicarán en esta página con fecha de actualización." data-en="We reserve the right to modify this policy. Changes will be published on this page with update date.">Nos reservamos el derecho de modificar esta política. Los cambios se publicarán en esta página con fecha de actualización.</p>
-        
-        <h2 data-es="12. RECLAMACIONES" data-en="12. COMPLAINTS">12. RECLAMACIONES</h2>
-        <p data-es="Si consideras que tus derechos han sido vulnerados, puedes presentar una reclamación ante la Oficina Nacional de Protección de Datos Personales de Cuba." data-en="If you consider your rights have been violated, you can file a complaint with the National Office of Personal Data Protection of Cuba.">Si consideras que tus derechos han sido vulnerados, puedes presentar una reclamación ante la Oficina Nacional de Protección de Datos Personales de Cuba.</p>
-        
-        <div style="text-align: center;">
-            <a href="index.html" class="back-link" data-es="← Volver al Inicio" data-en="← Back to Home">← Volver al Inicio</a>
+    <div class="overlay" id="menu-overlay"></div>
+    <div class="drawer" id="menu-drawer">
+        <div class="drawer-header">
+            <h3>MENÚ</h3>
+            <button class="icon-btn" id="menu-close" style="border-color:#333;color:#fff;">
+                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="drawer-body">
+            <ul style="list-style:none;">
+                <li style="margin-bottom:10px;"><a href="galeria.html" class="menu-link">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    Galería
+                </a></li>
+                <li style="margin-bottom:10px;"><a href="terminos.html" class="menu-link">
+                    <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    Términos
+                </a></li>
+                <li style="margin-bottom:10px;"><a href="privacidad.html" class="menu-link current">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Privacidad
+                </a></li>
+            </ul>
         </div>
     </div>
 
-    <script>
-        // LANGUAGE SYSTEM
-        let currentLang = localStorage.getItem('stikmania_lang') || 'es';
-        
-        function toggleLanguage() {
-            currentLang = currentLang === 'es' ? 'en' : 'es';
-            localStorage.setItem('stikmania_lang', currentLang);
-            updateLanguage();
-        }
-        
-        function updateLanguage() {
-            document.getElementById('langToggle').textContent = currentLang === 'es' ? 'EN' : 'ES';
-            document.querySelectorAll('[data-es]').forEach(el => {
-                el.textContent = currentLang === 'es' ? el.getAttribute('data-es') : el.getAttribute('data-en');
-            });
-            document.documentElement.lang = currentLang;
-        }
-        
-        updateLanguage();
-    </script>
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <span class="hero-badge reveal">Legal</span>
+                <h1 class="reveal">Política de <span class="text-neon">Privacidad</span></h1>
+                <p class="legal-meta reveal">Última actualización: Enero 2026</p>
+            </div>
+        </section>
 
+        <div class="legal-wrap">
+            <div class="legal-item reveal">
+                <h2>1. Responsable del tratamiento</h2>
+                <p><strong>STIKMANIA</strong><br>
+                La Habana, Cuba<br>
+                Email: <a href="mailto:stikmania795@gmail.com">stikmania795@gmail.com</a><br>
+                Teléfono: <a href="https://wa.me/5359758756">+53 5 975 8756</a></p>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>2. Datos que recopilamos</h2>
+                <p>Recopilamos únicamente los datos necesarios para prestar nuestros servicios:</p>
+                <ul>
+                    <li><strong>Datos de contacto:</strong> nombre completo, número de teléfono, correo electrónico</li>
+                    <li><strong>Datos del proyecto:</strong> descripción del negocio, requisitos del diseño, archivos proporcionados</li>
+                    <li><strong>Datos de pago:</strong> método de pago preferido (no almacenamos datos bancarios)</li>
+                </ul>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>3. Finalidad del tratamiento</h2>
+                <p>Usamos tus datos exclusivamente para:</p>
+                <ul>
+                    <li>Comunicación sobre el proyecto (presupuestos, avances, entregas)</li>
+                    <li>Procesamiento de pagos</li>
+                    <li>Envío de productos físicos (stickers)</li>
+                    <li>Soporte post-venta</li>
+                    <li>Facturación (cuando aplique)</li>
+                </ul>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>4. Base legal</h2>
+                <p>El tratamiento de tus datos se basa en:</p>
+                <ul>
+                    <li><strong>Ejecución de contrato:</strong> para prestar los servicios contratados</li>
+                    <li><strong>Consentimiento:</strong> para envío de comunicaciones comerciales (puedes darte de baja cuando quieras)</li>
+                    <li><strong>Obligación legal:</strong> para facturación y contabilidad</li>
+                </ul>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>5. Destinatarios</h2>
+                <p><strong>No compartimos tus datos con terceros.</strong></p>
+                <p>Excepciones:</p>
+                <ul>
+                    <li>Proveedores de hosting (solo para proyectos web, bajo contrato de confidencialidad)</li>
+                    <li>Autoridades competentes (solo por obligación legal)</li>
+                </ul>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>6. Conservación de datos</h2>
+                <p>Conservamos tus datos durante:</p>
+                <ul>
+                    <li><strong>Proyectos activos:</strong> mientras dure el proyecto + 1 año</li>
+                    <li><strong>Facturación:</strong> 5 años (obligación legal)</li>
+                    <li><strong>Comunicaciones comerciales:</strong> hasta que te des de baja</li>
+                </ul>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>7. Tus derechos</h2>
+                <p>Tienes derecho a:</p>
+                <ul>
+                    <li><strong>Acceso:</strong> solicitar copia de tus datos</li>
+                    <li><strong>Rectificación:</strong> corregir datos incorrectos</li>
+                    <li><strong>Supresión:</strong> solicitar eliminación de datos (cuando no haya obligación legal de conservarlos)</li>
+                    <li><strong>Oposición:</strong> oponerte al tratamiento para comunicaciones comerciales</li>
+                    <li><strong>Portabilidad:</strong> recibir tus datos en formato estructurado</li>
+                </ul>
+                <p>Para ejercer tus derechos: <a href="mailto:stikmania795@gmail.com">stikmania795@gmail.com</a></p>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>8. Seguridad</h2>
+                <p>Implementamos medidas técnicas y organizativas para proteger tus datos:</p>
+                <ul>
+                    <li>Almacenamiento en dispositivos con contraseña</li>
+                    <li>Comunicación cifrada (WhatsApp, email)</li>
+                    <li>Acceso restringido al responsable (Adrián González)</li>
+                </ul>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>9. Cookies</h2>
+                <p>Nuestra web usa cookies analíticas anónimas (Google Analytics). Puedes desactivarlas en tu navegador en cualquier momento.</p>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>10. Menores de edad</h2>
+                <p>No recopilamos datos de menores de 18 años. Si eres menor, necesitas autorización de un tutor para contratar nuestros servicios.</p>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>11. Cambios en la política</h2>
+                <p>Nos reservamos el derecho de modificar esta política. Los cambios se publicarán en esta página con la fecha de actualización correspondiente.</p>
+            </div>
+
+            <div class="legal-item reveal">
+                <h2>12. Reclamaciones</h2>
+                <p>Si consideras que tus derechos han sido vulnerados, puedes presentar una reclamación ante la Oficina Nacional de Protección de Datos Personales de Cuba.</p>
+            </div>
+        </div>
+
+        <section class="cta-final">
+            <div class="container">
+                <h2 class="reveal">¿Dudas sobre tus datos?</h2>
+                <p class="reveal">Escríbeme directo y lo resolvemos en el momento.</p>
+                <div class="cta-buttons reveal">
+                    <a href="index.html" class="btn btn-primary">Volver al inicio</a>
+                    <a href="https://wa.me/5359758756" target="_blank" rel="noopener" class="btn btn-outline">Hablar por WhatsApp</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3 class="logo" style="margin-bottom:10px;">STIKMANIA</h3>
+            <p>Tallas que se pegan. La Habana, Cuba.</p>
+            <div class="footer-links">
+                <a href="https://wa.me/5359758756" target="_blank" rel="noopener">WhatsApp</a>
+                <a href="mailto:stikmania795@gmail.com">Email</a>
+                <a href="https://instagram.com/sti_kmania" target="_blank" rel="noopener">Instagram</a>
+            </div>
+            <div class="footer-links" style="margin-top:10px;">
+                <a href="index.html">Inicio</a>
+                <a href="galeria.html">Galería</a>
+                <a href="terminos.html">Términos</a>
+                <a href="privacidad.html">Privacidad</a>
+            </div>
+            <p>© 2026 STIKMANIA. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5359758756" target="_blank" class="whatsapp-float" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initDrawers();
+            initReveal();
+        });
+        function initDrawers() {
+            const btn = document.getElementById('menu-btn');
+            const drawer = document.getElementById('menu-drawer');
+            const overlay = document.getElementById('menu-overlay');
+            const close = document.getElementById('menu-close');
+            btn.addEventListener('click', () => { drawer.classList.add('active'); overlay.classList.add('active'); });
+            const hide = () => { drawer.classList.remove('active'); overlay.classList.remove('active'); };
+            close.addEventListener('click', hide);
+            overlay.addEventListener('click', hide);
+            document.querySelectorAll('.menu-link').forEach(l => l.addEventListener('click', hide));
+        }
+        function initReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+    </script>
 </body>
 </html>
