@@ -1,7 +1,6 @@
 /* ============================================
-   STIKMANIA - Datos + Motor de Precios v3.2
-   ARCHIVO ÚNICO, sin dependencias.
-   v3.2: carpetas con nombres EXACTOS del repo.
+   STIKMANIA - Datos + Motor de Precios v3.3
+   ARCHIVO ÚNICO: no depende de ningún otro JS.
    ============================================ */
 
 window.PRICING = {
@@ -39,7 +38,8 @@ window.PriceEngine = {
         return this.ceilTo(raw, PRICING.packRoundStep);
     },
     stickerPrice(w, h, mat) {
-        return this.ceilCent(this.unit(w || PRICING.standard.w, h || PRICING.standard.h, mat || 'vinyl'));
+        const v = this.ceilCent(this.unit(w || PRICING.standard.w, h || PRICING.standard.h, mat || 'vinyl'));
+        return (typeof v === 'number' && isFinite(v) && v > 0) ? v : 0.18;
     },
     wholesaleOff(units) {
         let off = 0;
@@ -53,7 +53,9 @@ window.PriceEngine = {
 
 window.PACKS_CONFIG = {
     folderBase: 'images/packs/',
-    catsMode: 'merge'
+    catsMode: 'merge',
+    stickerPrice: 0.18,
+    packPriceDefault: 3
 };
 
 window.PACKS_DATA = [
@@ -239,7 +241,6 @@ window.PACKS_DATA = [
     }
 ];
 
-/* === PROCESAMIENTO BLINDADO === */
 (function () {
     function cleanName(f) {
         return f
@@ -250,6 +251,7 @@ window.PACKS_DATA = [
             .replace(/\b\w/g, c => c.toUpperCase());
     }
     const PE = window.PriceEngine;
+    const DEFAULT_STICKER = (window.PACKS_CONFIG && window.PACKS_CONFIG.stickerPrice) || 0.18;
     const mode = (window.PACKS_CONFIG && window.PACKS_CONFIG.catsMode) || 'merge';
 
     (window.PACKS_DATA || []).forEach(p => {
@@ -262,6 +264,7 @@ window.PACKS_DATA = [
                 s.src = window.PACKS_CONFIG.folderBase + (p.folder || p.id) + '/' + s.file;
                 if (s.alt) s.srcAlt = window.PACKS_CONFIG.folderBase + (p.folder || p.id) + '/' + s.alt;
                 s.price = PE.stickerPrice(s.w, s.h);
+                if (typeof s.price !== 'number' || !isFinite(s.price) || s.price <= 0) s.price = DEFAULT_STICKER;
                 s.units = 1;
             });
 
@@ -275,7 +278,8 @@ window.PACKS_DATA = [
 
             p.images = p.stickers.map(s => s.src);
             p.imagesAlt = p.stickers.map(s => s.srcAlt || s.src);
-            p.price = (typeof p.price === 'number') ? p.price : PE.packPrice(p.stickers.length);
+            p.price = (typeof p.price === 'number' && isFinite(p.price)) ? p.price : PE.packPrice(p.stickers.length);
+            if (typeof p.price !== 'number' || !isFinite(p.price) || p.price <= 0) p.price = 0.5;
             p.units = p.stickers.length;
         } catch (e) {
             console.warn('⚠️ Pack con problemas:', (p && p.id) || 'desconocido', e);
@@ -283,8 +287,11 @@ window.PACKS_DATA = [
             p.images = p.images || [];
             p.imagesAlt = p.imagesAlt || [];
             p.cats = p.cats || [];
-            p.price = (typeof p.price === 'number') ? p.price : 0;
+            p.price = (typeof p.price === 'number' && isFinite(p.price)) ? p.price : 0.5;
             p.units = p.units || 0;
+            p.stickers.forEach(s => {
+                if (typeof s.price !== 'number' || !isFinite(s.price)) s.price = DEFAULT_STICKER;
+            });
         }
     });
 })();

@@ -1,31 +1,41 @@
 <!DOCTYPE html>
-<html lang="es" data-lang="es">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="STIKMANIA">
+    <meta property="og:title" content="STIKMANIA | Servicios prestados a negocios y artistas">
+    <meta property="og:description" content="Algunos de los trabajos que he diseñado y/o producido.">
+    <meta property="og:url" content="https://stikmaniashop.github.io/galeria.html">
+    <meta property="og:image" content="https://stikmaniashop.github.io/images/OG_IMAGE.png?v=2">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="1080">
+    <meta property="og:image:height" content="1080">
+    <meta property="og:image:alt" content="STIKMANIA — Tallas que se pegan">
+    <meta property="og:locale" content="es_CU">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="STIKMANIA | Servicios prestados a negocios y artistas">
+    <meta name="twitter:description" content="Algunos de los trabajos que he diseñado y/o producido.">
+    <meta name="twitter:image" content="https://stikmaniashop.github.io/images/OG_IMAGE.png?v=2">
+
     <title>STIKMANIA | Servicios prestados a negocios y artistas</title>
     <meta name="description" content="Portafolio de stickers, etiquetas y empaques diseñados y producidos por STIKMANIA en Cuba.">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#00FF00">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="STIKMANIA | Portafolio de trabajos reales">
-    <meta property="og:description" content="Algunos de los trabajos que he diseñado y/o producido.">
-    <meta property="og:image" content="https://stikmania-tm.github.io/images/OG_IMAGE.png">
-    <meta property="og:url" content="https://stikmania-tm.github.io/galeria.html">
-    
+
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="images/icon-192.png">
     <link rel="icon" type="image/png" sizes="192x192" href="images/icon-192.png">
     <link rel="icon" type="image/png" sizes="512x512" href="images/icon-512.png">
     <link rel="shortcut icon" href="images/favicon.png">
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* === FUENTE DE MARCA: PERMANENT MARKER (con acentos) === */
         @font-face {
             font-family: 'Permanent Marker';
             src: url('assets/fonts/PermanentMarker-Regular.ttf') format('truetype'),
@@ -35,25 +45,15 @@
             font-style: normal;
             font-display: swap;
         }
-
         :root {
-            --neon: #00FF00;
-            --neon-dim: rgba(0,255,0,0.08);
-            --neon-glow: rgba(0,255,0,0.4);
-            --bg: #050505;
-            --surface: #0f0f0f;
-            --surface-light: #1a1a1a;
-            --text: #fff;
-            --text-muted: #888;
-            --text-dim: #555;
-            --danger: #FF3333;
-            --radius: 8px;
-            --radius-lg: 16px;
-            --font-display: 'Permanent Marker', 'Marker2', 'Segoe Print', cursive;
-            --font-body: 'Inter', system-ui, sans-serif;
-            --ease-out: cubic-bezier(0.4, 0, 0.2, 1);
+            --neon:#00FF00; --neon-dim:rgba(0,255,0,0.08); --neon-glow:rgba(0,255,0,0.4);
+            --bg:#050505; --surface:#0f0f0f; --surface-light:#1a1a1a;
+            --text:#fff; --text-muted:#888; --danger:#FF3333;
+            --radius:8px; --radius-lg:16px;
+            --font-display:'Permanent Marker','Marker2','Segoe Print',cursive;
+            --font-body:'Inter',system-ui,sans-serif;
+            --ease-out:cubic-bezier(0.4,0,0.2,1);
         }
-
         * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
         html { scroll-behavior:smooth; }
         body { font-family:var(--font-body); background:var(--bg); color:var(--text); line-height:1.5; overflow-x:hidden; }
@@ -61,35 +61,29 @@
         button { font-family:inherit; cursor:pointer; border:none; background:none; }
         img { max-width:100%; display:block; }
         .container { max-width:1200px; margin:0 auto; padding:0 16px; }
-        .hidden { display:none !important; }
         ::selection { background:var(--neon); color:#000; }
-
         h1,h2,h3,.logo { font-family:var(--font-display); letter-spacing:0.5px; font-weight:normal; }
         .logo { font-size:1.5rem; color:var(--neon); }
         .text-neon { color:var(--neon); }
 
-        /* === HEADER === */
         header { position:fixed; top:0; width:100%; background:rgba(5,5,5,0.95); backdrop-filter:blur(10px); z-index:100; border-bottom:1px solid #222; padding:12px 0; }
         .header-inner { display:flex; justify-content:space-between; align-items:center; }
         .header-actions { display:flex; gap:10px; align-items:center; }
-        .icon-btn { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border:1px solid var(--neon); border-radius:var(--radius); color:var(--neon); position:relative; transition:all 0.2s var(--ease-out); }
+        .icon-btn { width:38px; height:38px; display:flex; align-items:center; justify-content:center; border:1px solid var(--neon); border-radius:var(--radius); color:var(--neon); transition:all 0.2s var(--ease-out); }
         .icon-btn:hover { background:var(--neon-dim); }
         .icon-btn svg { width:20px; height:20px; stroke:currentColor; fill:none; stroke-width:2; }
         .cart-badge { position:absolute; top:-6px; right:-6px; background:var(--danger); color:#fff; font-size:0.7rem; font-weight:bold; width:18px; height:18px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-family:var(--font-body); }
         .lang-btn { font-size:0.75rem; font-weight:bold; padding:6px 10px; }
 
-        /* === PAGE HERO === */
         .page-hero { padding:130px 0 50px; text-align:center; background:radial-gradient(circle at top, var(--neon-dim), transparent 70%); }
         .hero-badge { display:inline-block; background:var(--neon-dim); border:1px solid var(--neon); padding:6px 16px; border-radius:50px; font-size:0.75rem; color:var(--neon); font-weight:700; text-transform:uppercase; letter-spacing:2px; margin-bottom:20px; font-family:var(--font-body); }
         .page-hero h1 { font-size:2.2rem; line-height:1.15; max-width:700px; margin:0 auto 18px; letter-spacing:1px; }
         .page-hero p { color:var(--text-muted); font-size:1.05rem; max-width:560px; margin:0 auto; }
 
-        /* === SECCIONES === */
         section { padding:60px 0; }
         .section-title { font-size:1.9rem; text-align:center; margin-bottom:12px; letter-spacing:1px; }
         .section-subtitle { text-align:center; color:var(--text-muted); margin-bottom:45px; font-size:0.95rem; }
 
-        /* === GALERÍA === */
         .gallery-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; }
         .gallery-item { aspect-ratio:1; background:var(--surface); border-radius:12px; overflow:hidden; position:relative; border:1px solid #222; cursor:pointer; transition:border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out); }
         .gallery-item img { width:100%; height:100%; object-fit:cover; transition:transform 0.6s var(--ease-out); }
@@ -100,7 +94,6 @@
         .gallery-tag { position:absolute; bottom:10px; left:10px; background:rgba(0,0,0,0.85); color:var(--neon); padding:4px 10px; border-radius:50px; font-size:0.68rem; font-weight:700; letter-spacing:0.5px; z-index:2; backdrop-filter:blur(4px); transition:transform 0.3s var(--ease-out); font-family:var(--font-body); }
         .gallery-item:hover .gallery-tag { transform:translateY(-2px); }
 
-        /* === ENTIDADES ASOCIADAS === */
         .entities-section { background:var(--surface); border-top:1px solid #222; border-bottom:1px solid #222; }
         .entities-grid { display:grid; grid-template-columns:repeat(2, 1fr); gap:16px; max-width:900px; margin:0 auto; }
         .entity-card { background:var(--bg); border:1px solid #222; border-radius:12px; padding:28px 20px; display:flex; align-items:center; justify-content:center; transition:all 0.3s var(--ease-out); }
@@ -108,7 +101,6 @@
         .entity-card:hover { border-color:var(--neon); transform:translateY(-4px); box-shadow:0 12px 30px rgba(0,255,0,0.08); }
         .entity-card:hover img { filter:grayscale(0%) brightness(1.1); opacity:1; }
 
-        /* === CTA FINAL === */
         .cta-final { padding:70px 0; text-align:center; background:radial-gradient(circle at bottom, var(--neon-dim), transparent 70%); }
         .cta-final h2 { font-size:2rem; margin-bottom:14px; letter-spacing:1px; }
         .cta-final p { color:var(--text-muted); margin-bottom:30px; font-size:1rem; }
@@ -120,7 +112,6 @@
         .btn-outline { border:2px solid var(--neon); color:var(--neon); }
         .btn-outline:hover { background:var(--neon); color:#000; }
 
-        /* === DRAWERS === */
         .overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:200; opacity:0; visibility:hidden; transition:0.3s; }
         .overlay.active { opacity:1; visibility:visible; }
         .drawer { position:fixed; top:0; right:0; width:300px; max-width:85%; height:100%; background:var(--surface); z-index:201; transform:translateX(100%); transition:transform 0.3s var(--ease-out); display:flex; flex-direction:column; border-left:1px solid #222; }
@@ -139,27 +130,22 @@
         .cart-item-price { color:var(--neon); font-size:0.85rem; }
         .remove-btn { color:var(--danger); font-size:1.2rem; padding:5px; }
 
-        /* === WHATSAPP FLOTANTE === */
         .whatsapp-float { position:fixed; bottom:25px; right:25px; width:60px; height:60px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 4px 20px rgba(37,211,102,0.5); z-index:99; animation:pulse 2s infinite; transition:transform 0.3s; }
         .whatsapp-float:hover { transform:scale(1.1); }
         .whatsapp-float svg { width:32px; height:32px; fill:white; }
         @keyframes pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.5);} 50%{box-shadow:0 4px 30px rgba(37,211,102,0.8);} }
 
-        /* === REVEAL ON SCROLL === */
         .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out); }
         .reveal.visible { opacity:1; transform:translateY(0); }
 
-        /* === TOAST === */
         .toast-container { position:fixed; bottom:100px; left:50%; transform:translateX(-50%); z-index:300; display:flex; flex-direction:column; gap:10px; pointer-events:none; }
         .toast { background:var(--surface); border:1px solid var(--neon); padding:12px 20px; border-radius:8px; font-size:0.9rem; box-shadow:0 4px 12px rgba(0,0,0,0.5); animation:slideUp 0.3s var(--ease-out); pointer-events:auto; }
         @keyframes slideUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
 
-        /* === FOOTER === */
         footer { background:#000; padding:40px 0 20px; text-align:center; color:var(--text-muted); font-size:0.85rem; border-top:1px solid #222; }
         .footer-links { display:flex; justify-content:center; gap:20px; margin:20px 0; flex-wrap:wrap; }
         .footer-links a:hover { color:var(--neon); }
 
-        /* === RESPONSIVE === */
         @media (min-width:768px) {
             .page-hero h1 { font-size:3rem; }
             .gallery-grid { grid-template-columns:repeat(4, 1fr); gap:16px; }
@@ -186,7 +172,6 @@
         </div>
     </header>
 
-    <!-- MENÚ -->
     <div class="overlay" id="menu-overlay"></div>
     <div class="drawer" id="menu-drawer">
         <div class="drawer-header">
@@ -213,7 +198,6 @@
         </div>
     </div>
 
-    <!-- CARRITO -->
     <div class="overlay" id="cart-overlay"></div>
     <div class="drawer" id="cart-drawer">
         <div class="drawer-header">
@@ -235,7 +219,6 @@
     </div>
 
     <main>
-        <!-- HERO -->
         <section class="page-hero">
             <div class="container">
                 <span class="hero-badge reveal" data-i18n="hero_badge">Portafolio</span>
@@ -244,7 +227,6 @@
             </div>
         </section>
 
-        <!-- GALERÍA -->
         <section>
             <div class="container">
                 <div class="gallery-grid">
@@ -262,7 +244,6 @@
             </div>
         </section>
 
-        <!-- ENTIDADES ASOCIADAS -->
         <section class="entities-section">
             <div class="container">
                 <h2 class="section-title reveal" data-i18n="entities_title">ENTIDADES ASOCIADAS</h2>
@@ -278,7 +259,6 @@
             </div>
         </section>
 
-        <!-- CTA FINAL -->
         <section class="cta-final">
             <div class="container">
                 <h2 class="reveal" data-i18n="cta_title">¿Listo para tu propio diseño?</h2>
