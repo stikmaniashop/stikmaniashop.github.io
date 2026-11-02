@@ -2,8 +2,8 @@
   "name": "STIKMANIA - Stickers Personalizados",
   "short_name": "STIKMANIA",
   "description": "Stickers, etiquetas y empaques personalizados en La Habana, Cuba. Tallas que se pegan.",
-  "start_url": "https://stikmaniashop.github.io/",
-  "scope": "https://stikmaniashop.github.io/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#050505",
   "theme_color": "#00FF00",
@@ -12,13 +12,13 @@
   "categories": ["shopping", "business"],
   "icons": [
     {
-      "src": "https://stikmaniashop.github.io/images/icon-192.png",
+      "src": "/images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "https://stikmaniashop.github.io/images/icon-512.png",
+      "src": "/images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
