@@ -40,7 +40,9 @@
             navigator.serviceWorker.controller && navigator.serviceWorker.controller.postMessage({ type: 'CLEAR_ALL' });
         }
         if (window.caches) caches.keys().then(ks => Promise.all(ks.map(k => caches.delete(k))));
-        ['stikmania_cart', 'stikmania_lang', 'stikmania_consent'].forEach(k => localStorage.removeItem(k));
+        ['stikmania_cart', 'stikmania_lang', 'stikmania_consent',
+         'stikmania_recs_pref_v1', 'stikmania_recs_profile_v1', 'stikmania_recs_shown_v1']
+            .forEach(k => localStorage.removeItem(k));
         setTimeout(() => location.reload(), 400);
     }
     window.STIKMANIA_STORAGE = { clearAll: clearAll };
