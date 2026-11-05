@@ -418,6 +418,8 @@
             </div>
             <div class="footer-links" style="margin-top:10px;">
                 <a href="galeria.html" data-i18n="menu_gallery">Galería</a>
+                <a href="guia.html">Guía</a>
+                <a href="referidos.html">Referidos</a>
                 <a href="terminos.html" data-i18n="menu_terms">Términos</a>
                 <a href="privacidad.html" data-i18n="menu_privacy">Privacidad</a>
             </div>
@@ -528,7 +530,6 @@
             initCTASticky();
             initModal();
             renderWholesaleNote();
-            registerSW();
         });
 
         function T(key) { return translations[currentLang][key] || key; }
@@ -749,6 +750,7 @@
             overlay.classList.add('active');
             modal.classList.add('active');
         }
+        window.openModal = openModal;
 
         function setupModalCarousel(dotsEl, imgEl) {
             if (modalImages.length < 2) { dotsEl.style.display = 'none'; return; }
@@ -924,13 +926,11 @@
             c.appendChild(t);
             setTimeout(() => { t.style.opacity = '0'; setTimeout(() => t.remove(), 300); }, 3000);
         }
-
-        function registerSW() {
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('sw.js').catch(err => console.log('SW failed:', err));
-            }
-        }
+        window.showToast = showToast;
     </script>
     <script src="assets/js/consent.js"></script>
+    <script src="assets/js/recs.js"></script>
+    <script src="assets/js/stik-offline.js"></script>
+    <script src="assets/js/sw-update.js"></script>
 </body>
 </html>

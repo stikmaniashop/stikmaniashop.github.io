@@ -263,14 +263,16 @@
 
             <div class="legal-item reveal" id="cookies">
                 <h2>9. Cookies y almacenamiento local</h2>
-                <p><strong>No usamos cookies de seguimiento ni publicidad de terceros.</strong> Para que la web funcione sin conexión, guardamos información únicamente en tu dispositivo:</p>
+                <p><strong>No usamos cookies de seguimiento ni publicidad de terceros, y no usamos Google Analytics.</strong> Para que la web funcione sin conexión, guardamos información únicamente en tu dispositivo:</p>
                 <ul>
                     <li><strong>stikmania_cart:</strong> productos de tu carrito</li>
                     <li><strong>stikmania_lang:</strong> idioma preferido (ES/EN)</li>
-                    <li><strong>stikmania_consent:</strong> tu aceptación de este aviso</li>
-                    <li><strong>Caché del Service Worker:</strong> páginas, imágenes y fuentes para el modo offline permanente</li>
+                    <li><strong>stikmania_consent:</strong> tu aceptación del aviso de almacenamiento</li>
+                    <li><strong>stikmania_recs_*:</strong> módulo opcional de sugerencias personalizadas (solo si lo activas desde "Tus preferencias"): categorías generales de interés, nunca nombre, correo, textos ni URLs. Caduca a los 30 días; tu elección, a los 180.</li>
+                    <li><strong>stikmania_mkt_*:</strong> recordatorios locales (carrito, oferta de prueba, reactivación), código de referido y contador anónimo del test A/B del botón principal</li>
+                    <li><strong>Caché del Service Worker:</strong> páginas, imágenes y fuentes para el modo offline</li>
                 </ul>
-                <p>Estos datos nunca salen de tu dispositivo. Puedes eliminarlos cuando quieras desde el menú → <strong>"Limpiar datos locales"</strong>, o desde la configuración de tu navegador. Al eliminarlos, la web volverá a descargarse la próxima vez que entres con conexión.</p>
+                <p>Ninguno de estos datos sale de tu dispositivo ni se envía a servidores. Puedes eliminarlos cuando quieras desde el menú → <strong>"Limpiar datos locales"</strong>, o desde "Tus preferencias" → "Desactivar y borrar intereses". Al eliminarlos, la web volverá a descargarse la próxima vez que entres con conexión.</p>
             </div>
 
             <div class="legal-item reveal">
@@ -313,6 +315,8 @@
             <div class="footer-links" style="margin-top:10px;">
                 <a href="index.html">Inicio</a>
                 <a href="galeria.html">Galería</a>
+                <a href="guia.html">Guía</a>
+                <a href="referidos.html">Referidos</a>
                 <a href="terminos.html">Términos</a>
                 <a href="privacidad.html">Privacidad</a>
             </div>
@@ -350,5 +354,7 @@
         }
     </script>
     <script src="assets/js/consent.js"></script>
+    <script src="assets/js/recs.js"></script>
+    <script src="assets/js/sw-update.js"></script>
 </body>
 </html>
