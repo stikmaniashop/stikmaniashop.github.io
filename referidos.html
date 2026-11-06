@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Referidos STIKMANIA | Trae un asere, gana tú también</title>
+    <meta name="description" content="Programa de referidos de STIKMANIA: condiciones claras, sin premios por reseñas. Funciona sin conexión.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00FF00">
+    <meta property="og:title" content="Referidos STIKMANIA | Trae un asere, gana tú también">
+    <meta property="og:description" content="−10% para tu amigo, $1 USD de crédito para ti. Reglas claras y sin trucos.">
+    <meta property="og:image" content="https://stikmaniashop.github.io/images/OG_IMAGE.png?v=2">
+    <meta property="og:url" content="https://stikmaniashop.github.io/referidos.html">
+    <link rel="icon" type="image/png" href="images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face { font-family:'Permanent Marker'; src:url('assets/fonts/PermanentMarker-Regular.ttf') format('truetype'),url('assets/fonts/PermanentMarker.ttf') format('truetype'); font-display:swap; }
+        :root { --neon:#00FF00; --bg:#050505; --surface:#0f0f0f; --muted:#888; --font-d:'Permanent Marker',cursive; --font-b:'Inter',system-ui,sans-serif; }
+        *{margin:0;padding:0;box-sizing:border-box;} body{font-family:var(--font-b);background:var(--bg);color:#fff;line-height:1.6;}
+        a{color:inherit;text-decoration:none;} .container{max-width:760px;margin:0 auto;padding:0 16px;}
+        h1,h2,h3,.logo{font-family:var(--font-d);font-weight:normal;} .logo{font-size:1.5rem;color:var(--neon);}
+        header{position:fixed;top:0;width:100%;background:rgba(5,5,5,0.95);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid #222;padding:12px 0;}
+        .header-inner{display:flex;justify-content:space-between;align-items:center;}
+        .hero{padding:120px 0 30px;text-align:center;} .hero h1{font-size:2rem;margin-bottom:10px;} .hero p{color:var(--muted);}
+        section{padding:30px 0;} .card{background:var(--surface);border:1px solid #222;border-radius:12px;padding:22px;margin-bottom:16px;}
+        .card p,.card li{color:#ccc;font-size:0.92rem;margin-bottom:8px;} .card ul{padding-left:20px;}
+        .code-box{font-family:monospace;font-size:1.6rem;color:var(--neon);border:1px dashed var(--neon);border-radius:8px;padding:14px;text-align:center;margin:12px 0;letter-spacing:2px;}
+        input{width:100%;padding:12px;background:var(--bg);border:1px solid #333;border-radius:6px;color:#fff;font-family:monospace;font-size:1rem;text-transform:uppercase;}
+        .btn{display:inline-block;background:var(--neon);color:#000;border:none;border-radius:8px;padding:12px 20px;font-weight:700;cursor:pointer;font-family:var(--font-b);min-height:44px;margin-top:10px;}
+        .btn-ghost{background:none;border:1px solid #444;color:#bbb;}
+        .msg{margin-top:10px;font-size:0.9rem;font-weight:600;} .msg.ok{color:var(--neon);} .msg.err{color:#FF3333;}
+        footer{background:#000;padding:30px 0;text-align:center;color:var(--muted);font-size:0.85rem;border-top:1px solid #222;}
+        .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:14px 0;} .footer-links a:hover{color:var(--neon);}
+        button:focus-visible,input:focus-visible{outline:2px solid var(--neon);outline-offset:2px;}
+    </style>
+</head>
+<body>
+    <header><div class="container header-inner">
+        <a href="index.html" class="logo">STIKMANIA</a>
+        <a href="index.html#tienda" class="btn btn-ghost" style="padding:8px 14px;min-height:36px;">Ver packs</a>
+    </div></header>
+
+    <main>
+        <section class="hero"><div class="container">
+            <h1>Trae un asere, ganan los dos</h1>
+            <p>Programa de referidos. Reglas claras, sin trucos y sin premios por reseñas.</p>
+        </div></section>
+
+        <section><div class="container">
+            <div class="card">
+                <h3>Tu código</h3>
+                <div class="code-box" id="my-code">—</div>
+                <p>Compártelo por voz, por escrito o pegado en un sticker. Cuando alguien lo use en su primer pedido, tú recibes <strong style="color:var(--neon);">$1 USD de crédito</strong> en tu próximo pack y esa persona <strong style="color:var(--neon);">−10%</strong> en el suyo.</p>
+                <button class="btn btn-ghost" id="copy-code">Copiar mi código</button>
+            </div>
+
+            <div class="card">
+                <h3>¿Te recomendaron?</h3>
+                <p>Escribe el código que te dieron (formato ASERE-1234), o escanea el QR de tu amigo: si el enlace trae el código, aparecerá solo aquí abajo. Se guarda únicamente en este teléfono y se añade automáticamente a tu mensaje de pedido.</p>
+                <input id="ref-input" placeholder="ASERE-0000" maxlength="10" autocomplete="off">
+                <button class="btn" id="ref-save">Guardar código</button>
+                <button class="btn btn-ghost" id="ref-clear">Quitar código</button>
+                <p class="msg" id="ref-msg" role="status"></p>
+            </div>
+
+            <div class="card">
+                <h3>Condiciones (sin letra pequeña)</h3>
+                <ul>
+                    <li>El descuento aplica al confirmar un pedido real por WhatsApp; STIKMANIA valida el código manualmente.</li>
+                    <li>Un código por persona; no vale recomendarse a uno mismo.</li>
+                    <li>El crédito del recomendante se aplica en su próximo pedido confirmado.</li>
+                    <li>No se recompensa por reseñas, likes ni comentarios: solo por pedidos reales.</li>
+                    <li>El programa puede terminar; los códigos ya usados en pedidos confirmados se respetan.</li>
+                    <li>Todo se guarda en tu dispositivo (clave stikmania_mkt_ref_code); nada se envía a servidores hasta que tú escribas por WhatsApp.</li>
+                </ul>
+            </div>
+        </div></section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3 class="logo" style="margin-bottom:8px;">STIKMANIA</h3>
+            <p>Tallas que se pegan. La Habana, Cuba.</p>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a><a href="guia.html">Guía</a><a href="galeria.html">Galería</a>
+                <a href="terminos.html">Términos</a><a href="privacidad.html">Privacidad</a>
+            </div>
+            <p>© 2026 STIKMANIA.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/stik-offline.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function(){
+            var codeEl = document.getElementById('my-code');
+            if (window.STIK_MKT) codeEl.textContent = window.STIK_MKT.myCode();
+            document.getElementById('copy-code').addEventListener('click', function(){
+                var t = codeEl.textContent;
+                try { if (navigator.clipboard) navigator.clipboard.writeText(t); } catch(e){}
+                this.textContent = 'Copiado';
+            });
+            var msg = document.getElementById('ref-msg');
+
+            /* Pre-relleno desde QR o enlace compartido: referidos.html?c=ASERE-1234 */
+            var params = new URLSearchParams(location.search);
+            var pre = (params.get('c') || params.get('ref') || '').toUpperCase();
+            if (pre && window.STIK_MKT && window.STIK_MKT.validCode(pre)) {
+                document.getElementById('ref-input').value = pre;
+                msg.className = 'msg ok';
+                msg.textContent = 'Código detectado del QR de tu amigo: revísalo y pulsa Guardar.';
+            }
+
+            document.getElementById('ref-save').addEventListener('click', function(){
+                var v = document.getElementById('ref-input').value.trim().toUpperCase();
+                if (window.STIK_MKT && window.STIK_MKT.setRefCode(v)) { msg.className = 'msg ok'; msg.textContent = 'Código guardado en este teléfono. Se añadirá a tu pedido por WhatsApp.'; }
+                else { msg.className = 'msg err'; msg.textContent = 'Código no válido. Formato: ASERE-1234 (y no puede ser el tuyo).'; }
+            });
+            document.getElementById('ref-clear').addEventListener('click', function(){
+                if (window.STIK_MKT) window.STIK_MKT.clearRefCode();
+                msg.className = 'msg ok'; msg.textContent = 'Código quitado.';
+            });
+        });
+    </script>
+    <script src="assets/js/consent.js"></script>
+    <script src="assets/js/recs.js"></script>
+    <script src="assets/js/sw-update.js"></script>
+    <script src="assets/js/qr-morph.js"></script>
+</body>
+</html>

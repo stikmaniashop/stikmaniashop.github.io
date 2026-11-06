@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Guía STIKMANIA | Etiqueta tu producto sin morir en el intento</title>
+    <meta name="description" content="Guía gratuita: tamaños, materiales y precios para etiquetar stickers en Cuba. Funciona sin conexión.">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#00FF00">
+    <meta property="og:title" content="Guía STIKMANIA | Etiqueta tu producto">
+    <meta property="og:description" content="Simulador de tamaños, diagnóstico de material y precios reales. Offline-ready.">
+    <meta property="og:image" content="https://stikmaniashop.github.io/images/OG_IMAGE.png?v=2">
+    <meta property="og:url" content="https://stikmaniashop.github.io/guia.html">
+    <link rel="icon" type="image/png" href="images/favicon.png?v=2">
+    <link rel="manifest" href="manifest.json?v=2">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"FAQPage",
+      "mainEntity":[
+        {"@type":"Question","name":"¿Cuánto cuesta un sticker personalizado?","acceptedAnswer":{"@type":"Answer","text":"Hasta 16 cm² (ej. 4x4) cuesta $0.15 USD por unidad; hasta 49 cm² (ej. 6x6) $0.18; mayor de 49 cm² suma $0.005 por cm² extra. El papel fotográfico resta 30% y el vinilo transparente suma 30%."}},
+        {"@type":"Question","name":"¿Cuál es el pedido mínimo?","acceptedAnswer":{"@type":"Answer","text":"10 unidades en pedidos personalizados. El Pack de Prueba son 10 stickers 5x5 en vinilo por $1.50 USD, una vez por cliente."}},
+        {"@type":"Question","name":"¿Cómo pago?","acceptedAnswer":{"@type":"Answer","text":"Efectivo (CUP, USD, EUR), transferencia bancaria o saldo móvil. Se pide 50% de anticipo y 50% contra entrega."}},
+        {"@type":"Question","name":"¿Cuánto demora?","acceptedAnswer":{"@type":"Answer","text":"Packs predefinidos 2-5 días hábiles; personalizados 3-7; por mayor (500+) 7-14."}},
+        {"@type":"Question","name":"¿Duran los stickers?","acceptedAnswer":{"@type":"Answer","text":"El vinilo impermeable tiene garantía de 2 años en condiciones normales de uso."}}
+      ]
+    }
+    </script>
+    <style>
+        @font-face { font-family:'Permanent Marker'; src:url('assets/fonts/PermanentMarker-Regular.ttf') format('truetype'),url('assets/fonts/PermanentMarker.ttf') format('truetype'); font-display:swap; }
+        :root { --neon:#00FF00; --bg:#050505; --surface:#0f0f0f; --text:#fff; --muted:#888; --font-d:'Permanent Marker',cursive; --font-b:'Inter',system-ui,sans-serif; }
+        *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;}
+        body{font-family:var(--font-b);background:var(--bg);color:var(--text);line-height:1.6;}
+        a{color:inherit;text-decoration:none;} img{max-width:100%;display:block;}
+        .container{max-width:900px;margin:0 auto;padding:0 16px;}
+        h1,h2,h3,.logo{font-family:var(--font-d);font-weight:normal;letter-spacing:0.5px;}
+        .logo{font-size:1.5rem;color:var(--neon);}
+        header{position:fixed;top:0;width:100%;background:rgba(5,5,5,0.95);backdrop-filter:blur(10px);z-index:100;border-bottom:1px solid #222;padding:12px 0;}
+        .header-inner{display:flex;justify-content:space-between;align-items:center;}
+        .hero{padding:120px 0 40px;text-align:center;}
+        .hero h1{font-size:2rem;margin-bottom:12px;}
+        .hero p{color:var(--muted);max-width:600px;margin:0 auto;}
+        section{padding:40px 0;}
+        h2{color:var(--neon);font-size:1.5rem;margin-bottom:16px;}
+        .card{background:var(--surface);border:1px solid #222;border-radius:12px;padding:22px;margin-bottom:16px;}
+        .card p,.card li{color:#ccc;font-size:0.92rem;margin-bottom:8px;}
+        .card ul{padding-left:20px;}
+        label{display:block;color:var(--neon);font-size:0.85rem;font-weight:600;margin:12px 0 6px;}
+        select,input[type=range]{width:100%;padding:10px;background:var(--bg);border:1px solid #333;border-radius:6px;color:#fff;font-family:var(--font-b);}
+        .sim-stage{position:relative;height:220px;background:var(--bg);border:1px dashed #333;border-radius:12px;margin:16px 0;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+        .sim-stage svg{height:190px;}
+        .sim-sticker{position:absolute;border:2px solid var(--neon);background:rgba(0,255,0,0.15);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;color:var(--neon);font-weight:700;}
+        .sim-out{font-size:0.95rem;color:#ccc;} .sim-out strong{color:var(--neon);}
+        .btn{display:inline-block;background:var(--neon);color:#000;border:none;border-radius:8px;padding:12px 20px;font-weight:700;cursor:pointer;font-family:var(--font-b);min-height:44px;}
+        .btn-ghost{background:none;border:1px solid #444;color:#bbb;}
+        .copyrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+        textarea{width:100%;min-height:90px;background:var(--bg);border:1px solid #333;border-radius:6px;color:#ccc;padding:10px;font-family:var(--font-b);font-size:0.85rem;}
+        footer{background:#000;padding:30px 0;text-align:center;color:var(--muted);font-size:0.85rem;border-top:1px solid #222;}
+        .footer-links{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:14px 0;}
+        .footer-links a:hover{color:var(--neon);}
+        button:focus-visible,a:focus-visible{outline:2px solid var(--neon);outline-offset:2px;}
+    </style>
+</head>
+<body>
+    <header><div class="container header-inner">
+        <a href="index.html" class="logo">STIKMANIA</a>
+        <a href="index.html#tienda" class="btn btn-ghost" style="padding:8px 14px;min-height:36px;">Ver packs</a>
+    </div></header>
+
+    <main>
+        <section class="hero"><div class="container">
+            <h1>Etiqueta tu producto sin morir en el intento</h1>
+            <p>Guía gratuita de STIKMANIA. Funciona sin conexión: una vez abierta, queda en tu teléfono.</p>
+        </div></section>
+
+        <section id="simulador"><div class="container">
+            <h2>1. Simulador de tamaños (gratis, offline)</h2>
+            <div class="card">
+                <label for="sim-obj">¿Dónde va el sticker?</label>
+                <select id="sim-obj">
+                    <option value="botella">Botella 600 ml</option>
+                    <option value="vaso">Vaso / copa de café</option>
+                    <option value="laptop">Laptop 13"</option>
+                    <option value="casco">Casco</option>
+                    <option value="bolsa">Bolsa de café / snacks</option>
+                </select>
+                <label for="sim-size">Tamaño del lado (cm): <span id="sim-size-val">5</span></label>
+                <input type="range" id="sim-size" min="3" max="10" step="0.5" value="5">
+                <div class="sim-stage" id="sim-stage"></div>
+                <p class="sim-out" id="sim-out"></p>
+                <a href="index.html#cotizador" class="btn">Cotizar este tamaño</a>
+            </div>
+        </div></section>
+
+        <section id="material"><div class="container">
+            <h2>2. Diagnóstico de material (3 preguntas)</h2>
+            <div class="card">
+                <label for="q1">¿Se mojará o irá en nevera?</label>
+                <select id="q1"><option value="si">Sí</option><option value="no">No</option></select>
+                <label for="q2">¿La superficie es curva o flexible?</label>
+                <select id="q2"><option value="si">Sí</option><option value="no">No</option></select>
+                <label for="q3">¿Presupuesto ajustado?</label>
+                <select id="q3"><option value="si">Sí</option><option value="no">No</option></select>
+                <p class="sim-out" id="mat-out" style="margin-top:14px;"></p>
+            </div>
+        </div></section>
+
+        <section id="faq"><div class="container">
+            <h2>3. Preguntas que siempre nos hacen</h2>
+            <div class="card"><h3>¿Cuánto cuesta?</h3><p>Hasta 16 cm² (ej. 4x4): $0.15 USD/unidad. Hasta 49 cm² (ej. 6x6): $0.18. Mayor de 49 cm²: +$0.005 por cm² extra. Papel fotográfico −30%, vinilo transparente +30%. Desde 50 unidades: −10%.</p></div>
+            <div class="card"><h3>¿Mínimo de pedido?</h3><p>10 unidades en personalizados. El Pack de Prueba: 10 stickers 5x5 vinilo por $1.50, una vez por cliente, sin suscripción ni renovación.</p></div>
+            <div class="card"><h3>¿Cómo pago?</h3><p>Efectivo (CUP, USD, EUR), transferencia o saldo móvil. 50% de anticipo, 50% contra entrega.</p></div>
+            <div class="card"><h3>¿Demora?</h3><p>Packs 2-5 días hábiles; personalizados 3-7; por mayor (500+) 7-14.</p></div>
+            <div class="card"><h3>¿Guardo tu contacto sin internet?</h3>
+                <p>Descarga nuestra tarjeta de contacto y llévala en el teléfono:</p>
+                <div class="copyrow"><a class="btn" download="stikmania.vcf" href="data:text/vcard;charset=utf-8,BEGIN%3AvCard%0AVERSION%3A3.0%0AFN%3ASTIKMANIA%0AORG%3ASTIKMANIA%0ATEL%3BTYPE%3DCELL%3A%2B5359758756%0AEMAIL%3Astikmania795%40gmail.com%0AURL%3Ahttps%3A%2F%2Fstikmaniashop.github.io%0AADR%3BTYPE%3DWORK%3A%3B%3BLa%20Habana%3B%3B%3B%3BCuba%0AEND%3AvCard">Guardar vCard</a></div>
+            </div>
+        </div></section>
+
+        <section id="muro"><div class="container">
+            <h2>4. Muro de tallas (próximamente, con permiso)</h2>
+            <div class="card">
+                <p>Aquí publicaremos historias reales de clientes que nos autoricen por escrito. Mientras tanto, si quieres participar, envíanos tu foto y este texto confirmado:</p>
+                <textarea readonly id="perm-tpl">Autorizo a STIKMANIA a publicar mi foto y mi nombre/handle (@...) en su web y redes, solo para mostrar mi experiencia real con sus stickers. Puedo retirar este permiso cuando quiera escribiendo a stikmania795@gmail.com.</textarea>
+                <div class="copyrow"><button class="btn btn-ghost" id="copy-perm">Copiar texto de permiso</button></div>
+            </div>
+        </div></section>
+
+        <section id="caza"><div class="container">
+            <h2>5. Caza de tallas (juego urbano)</h2>
+            <div class="card">
+                <ul>
+                    <li>Encuentra un sticker STIKMANIA pegado en la ciudad (skates, laptops, postes amigos).</li>
+                    <li>Fotografíalo y escanea su QR: la web abre aunque no tengas datos.</li>
+                    <li>Envía la foto por WhatsApp y recibe 10% en tu próximo pedido.</li>
+                    <li>Si el dueño del sticker quiere salir en el Muro, pediremos su permiso antes.</li>
+                </ul>
+            </div>
+        </div></section>
+
+        <section id="colabs"><div class="container">
+            <h2>6. Colaboraciones</h2>
+            <div class="card">
+                <p>Marcas que ya confiaron en nosotros: Munchies, Nova Events, Ash Soap, Deli, Magnum y más (verificables en la <a href="galeria.html" style="color:var(--neon);">galería</a>).</p>
+                <p>Si atiendes al mismo público sin competir (cafés, cosmética artesanal, snacks, skate shops), proponemos co-packs: tu logo + nuestro vinilo, con QR cruzado en ambos empaques.</p>
+                <div class="copyrow"><a class="btn" href="https://wa.me/5359758756?text=Hola!%20Quiero%20proponer%20una%20colaboraci%C3%B3n%20con%20STIKMANIA" target="_blank" rel="noopener">Proponer colaboración</a></div>
+            </div>
+        </div></section>
+
+        <section id="difundir"><div class="container">
+            <h2>7. Textos listos para difundir</h2>
+            <div class="card">
+                <p>Reutiliza esta guía donde quieras:</p>
+                <textarea readonly id="share-1">STIKMANIA: stickers que aguantan agua, sol y lavadora de manos. Simula tu tamaño y precio sin conexión: https://stikmaniashop.github.io/guia.html</textarea>
+                <textarea readonly id="share-2">¿Etiquetas para tu emprendimiento? Precios claros desde $0.15/unidad y Pack de Prueba por $1.50. Cotiza en 30 segundos: https://stikmaniashop.github.io/</textarea>
+                <div class="copyrow">
+                    <button class="btn btn-ghost" data-copy="share-1">Copiar texto 1</button>
+                    <button class="btn btn-ghost" data-copy="share-2">Copiar texto 2</button>
+                </div>
+            </div>
+        </div></section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3 class="logo" style="margin-bottom:8px;">STIKMANIA</h3>
+            <p>Tallas que se pegan. La Habana, Cuba.</p>
+            <div class="footer-links">
+                <a href="index.html">Inicio</a><a href="galeria.html">Galería</a>
+                <a href="referidos.html">Referidos</a><a href="terminos.html">Términos</a><a href="privacidad.html">Privacidad</a>
+            </div>
+            <p>© 2026 STIKMANIA.</p>
+        </div>
+    </footer>
+
+    <script src="assets/data/packs.js"></script>
+    <script>
+        (function(){
+            var OBJS = { botella:{w:60,h:200}, vaso:{w:80,h:110}, laptop:{w:200,h:140}, casco:{w:150,h:140}, bolsa:{w:120,h:170} };
+            var stage = document.getElementById('sim-stage'), out = document.getElementById('sim-out');
+            var objSel = document.getElementById('sim-obj'), sizeIn = document.getElementById('sim-size'), sizeVal = document.getElementById('sim-size-val');
+            function priceUnit(cm){ var a = cm*cm; if (a <= 16) return 0.15; if (a <= 49) return 0.18; return 0.18 + (a-49)*0.005; }
+            function draw(){
+                var o = OBJS[objSel.value], cm = parseFloat(sizeIn.value);
+                sizeVal.textContent = cm;
+                var scale = 190 / Math.max(o.w, o.h);
+                var px = cm * 10 * scale;
+                stage.innerHTML = '<svg viewBox="0 0 '+o.w+' '+o.h+'" style="height:190px;"><rect x="2" y="2" width="'+(o.w-4)+'" height="'+(o.h-4)+'" rx="10" fill="#1a1a1a" stroke="#444"/></svg>' +
+                    '<div class="sim-sticker" style="width:'+px+'px;height:'+px+'px;">'+cm+'cm</div>';
+                var u = priceUnit(cm);
+                out.innerHTML = 'Área: <strong>'+(cm*cm).toFixed(0)+' cm²</strong> · Vinilo: <strong>$'+u.toFixed(2)+'/unidad</strong> · 50 uds: <strong>$'+(u*50*0.9).toFixed(2)+' (−10% mayor)</strong>';
+            }
+            objSel.addEventListener('change', draw); sizeIn.addEventListener('input', draw); draw();
+
+            function matDiag(){
+                var q1 = document.getElementById('q1').value, q2 = document.getElementById('q2').value, q3 = document.getElementById('q3').value;
+                var r;
+                if (q1 === 'si') r = 'Vinilo impermeable: aguanta nevera, agua y lavado. +0% sobre tarifa base.';
+                else if (q3 === 'si') r = 'Papel fotográfico: −30% del precio. Ideal interiores y tiradas cortas de bajo costo.';
+                else if (q2 === 'si') r = 'Vinilo impermeable: se adapta a curvas sin despegarse.';
+                else r = 'Vinilo impermeable o papel según presupuesto: superficie plana y seca acepta ambos.';
+                document.getElementById('mat-out').innerHTML = '<strong>Recomendado:</strong> ' + r;
+            }
+            ['q1','q2','q3'].forEach(function(id){ document.getElementById(id).addEventListener('change', matDiag); });
+            matDiag();
+
+            function copyText(el){
+                try { el.select(); document.execCommand('copy'); } catch(e){}
+                try { if (navigator.clipboard) navigator.clipboard.writeText(el.value); } catch(e){}
+            }
+            document.getElementById('copy-perm').addEventListener('click', function(){ copyText(document.getElementById('perm-tpl')); this.textContent = 'Copiado'; });
+            document.querySelectorAll('[data-copy]').forEach(function(b){
+                b.addEventListener('click', function(){ copyText(document.getElementById(b.dataset.copy)); b.textContent = 'Copiado'; });
+            });
+        })();
+    </script>
+    <script src="assets/js/consent.js"></script>
+    <script src="assets/js/recs.js"></script>
+    <script src="assets/js/sw-update.js"></script>
+    <script src="assets/js/qr-morph.js"></script>
+</body>
+</html>

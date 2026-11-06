@@ -1,39 +1,41 @@
 /* ============================================
-   STIKMANIA - Service Worker v4.1
+   STIKMANIA - Service Worker v4.2
    --------------------------------------------
-   NOVEDADES vs v4.0:
-   · JS y datos same-origin (/assets/*.js, packs.js…) ahora son
-     STALE-WHILE-REVALIDATE: el usuario ve la web al instante desde caché
-     y los cambios de precios/packs llegan en la visita siguiente
-     SIN tocar VERSION. (En v4.0 quedaban cache-first y no se renovaban.)
-   · PRECACHE incluye guia.html, referidos.html y sector-cafe.html:
-     un usuario instalado puede abrirlas offline sin haberlas visitado.
-   · Se mantiene: SWR de navegación, tope de 300 imágenes,
-     SKIP_WAITING para el aviso de "nueva versión" (sw-update.js).
+   NOVEDADES vs v4.0 / v4.1:
+   · PRECACHE incluye: guia.html, referidos.html, sector-cafe.html,
+     assets/js/recs.js, assets/js/stik-offline.js, assets/js/sw-update.js,
+     assets/js/qr-morph.js. Así un usuario instalado puede abrir
+     cualquier página offline sin haberla visitado.
+   · JS y datos same-origin: stale-while-revalidate (SWR) para que
+     cambios en packs.js/precios lleguen sin bump de VERSION.
+   · Imágenes runtime cache-first con tope de 300.
+   · qr-web.png NO se precachea: se cachea al primer uso (runtime).
+   · SKIP_WAITING para el aviso de "nueva versión" (sw-update.js).
 
    CUÁNDO CAMBIAR VERSION:
-   · Cambiaste HTML/CSS/JS de lógica o fuentes del shell → bump (v4.2…)
-   · Solo imágenes nuevas de packs/galería → NO hace falta (runtime).
-   · Cambios en packs.js/precios → NO hace falta (SWR los renueva solo).
+   · HTML/CSS/JS de lógica o fuentes → bump (v4.3…)
+   · Solo imágenes nuevas → NO hace falta.
+   · Cambios en packs.js/precios → NO hace falta (SWR los renueva).
    ============================================ */
 
-const VERSION = 'stikmania-v4.1';
+const VERSION = 'stikmania-v4.2';
 const SHELL_CACHE = VERSION + '-shell';
 const IMAGE_CACHE = VERSION + '-images';
 const IMAGE_LIMIT = 300;
 
-/* === SOLO EL SHELL + páginas de marketing offline === */
+/* === SHELL + páginas de marketing offline + módulos === */
 const PRECACHE = [
     '/', '/index.html', '/galeria.html', '/terminos.html', '/privacidad.html',
     '/guia.html', '/referidos.html', '/sector-cafe.html',
     '/manifest.json', '/assets/data/packs.js',
-    '/assets/js/consent.js', '/assets/js/recs.js', '/assets/js/stik-offline.js', '/assets/js/sw-update.js',
+    '/assets/js/consent.js', '/assets/js/recs.js', '/assets/js/stik-offline.js',
+    '/assets/js/sw-update.js', '/assets/js/qr-morph.js',
     '/assets/fonts/PermanentMarker-Regular.ttf', '/assets/fonts/PermanentMarker.ttf', '/assets/fonts/permanent-marker-regular.ttf',
     '/images/favicon.png', '/images/icon-192.png', '/images/icon-512.png',
     '/images/logo white.png', '/images/logo-white.png'
 ];
 
-/* ---------- INSTALACIÓN: solo el shell, rápido ---------- */
+/* ---------- INSTALACIÓN ---------- */
 self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(SHELL_CACHE)
@@ -42,7 +44,7 @@ self.addEventListener('install', event => {
     );
 });
 
-/* ---------- ACTIVACIÓN: borra cachés de versiones viejas ---------- */
+/* ---------- ACTIVACIÓN ---------- */
 self.addEventListener('activate', event => {
     event.waitUntil(
         caches.keys()
@@ -51,7 +53,7 @@ self.addEventListener('activate', event => {
     );
 });
 
-/* ---------- MENSAJES desde la página ---------- */
+/* ---------- MENSAJES ---------- */
 self.addEventListener('message', event => {
     if (event.data && event.data.type === 'SKIP_WAITING') self.skipWaiting();
     if (event.data && event.data.type === 'CLEAR_ALL') {
@@ -59,7 +61,7 @@ self.addEventListener('message', event => {
     }
 });
 
-/* ---------- HELPERS DE CACHÉ ---------- */
+/* ---------- HELPERS ---------- */
 async function trimCache(cacheName, maxEntries) {
     const cache = await caches.open(cacheName);
     const keys = await cache.keys();
@@ -68,7 +70,6 @@ async function trimCache(cacheName, maxEntries) {
     }
 }
 
-/* 1) NAVEGACIÓN stale-while-revalidate */
 async function handleNavigation(req) {
     const cache = await caches.open(SHELL_CACHE);
     const cached = await cache.match(req);
@@ -80,7 +81,6 @@ async function handleNavigation(req) {
     return fresh || cache.match('/index.html');
 }
 
-/* 2) JS Y DATOS same-origin: stale-while-revalidate */
 async function handleSWR(req) {
     const cache = await caches.open(SHELL_CACHE);
     const cached = await cache.match(req);
@@ -92,7 +92,6 @@ async function handleSWR(req) {
     return fresh || Response.error();
 }
 
-/* 3) IMÁGENES: cache-first con tope de 300 */
 async function handleImage(req) {
     const cache = await caches.open(IMAGE_CACHE);
     const hit = await cache.match(req);
@@ -104,12 +103,9 @@ async function handleImage(req) {
             trimCache(IMAGE_CACHE, IMAGE_LIMIT);
         }
         return res;
-    } catch (e) {
-        return Response.error();
-    }
+    } catch (e) { return Response.error(); }
 }
 
-/* 4) RESTO (fuentes, manifest): cache-first + guardado al primer uso */
 async function cacheFirst(req) {
     const cache = await caches.open(SHELL_CACHE);
     const hit = await cache.match(req);
@@ -118,9 +114,7 @@ async function cacheFirst(req) {
         const res = await fetch(req);
         if (res && (res.ok || res.type === 'opaque')) await cache.put(req, res.clone());
         return res;
-    } catch (e) {
-        return Response.error();
-    }
+    } catch (e) { return Response.error(); }
 }
 
 /* ---------- FETCH ---------- */
